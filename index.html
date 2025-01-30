@@ -1,1 +1,3311 @@
-<h1>Em construção.</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ameaças Ambientais em Terras Indígenas</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 id="header-title">Protegendo os Territórios Indígenas na Amazônia Brasileira: <br />
+      Uma Metodologia Espacial Baseada em Múltiplos Indicadores para Priorizar Áreas sob Pressão Ambiental</h1>
+    <div>
+      <button class="hamburger">&#9776;</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav class="sidebar">
+      <ul>
+        <li class="toctree-l1">
+          <a href="#" onclick="showSection('descricao')">Descrição Geral do Projeto</a>
+          <ul class="toctree-l2">
+            <li>
+              <a href="#" onclick="showSection('introducao')">Introdução</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('ameacas-ambientais')">Ameaças Ambientais</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('motivacao-objetivo')">Motivação e Objetivo</a>
+            </li>
+          </ul>
+        </li>
+        <li class="toctree-l1">
+          <a href="#" onclick="showSection('metodologia')">Metodologia</a>
+          <ul class="toctree-l2">
+            <li>
+              <a href="#" onclick="showSection('base-dados')">Bases de Dados</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('calculo-indice-sensibilidade-exposicao')">Cálculo dos índices de
+                sensibilidade e exposição ambiental nas Terras Indígenas da Amazônia Legal</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('calculo-indice-ameaca-agrupamento')">Cálculo dos índices de ameaça
+                ambiental no entorno dos Agrupamentos Indígenas da Amazônia Legal</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('calculo-priorizacao-socioambiental-agrupamentos')">Priorização
+                socioambiental dos Agrupamentos Indígenas da Amazônia Legal</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('scripts-codigos-analise')">Scripts e códigos de análise</a>
+            </li>
+          </ul>
+        </li>
+        <li class="toctree-l1">
+          <a href="#" onclick="showSection('resultados')">Resultados</a>
+          <ul class="toctree-l2">
+            <li>
+              <a href="#" onclick="showSection('indice-sensibilidade-ambiental')">Índice de Sensibilidade Ambiental</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('indice-ameaca-agrupamento')">Índice de Exposição Ambiental das Terras
+                Indígenas</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('priorizacao-socioambiental-agrupamentos')">Priorização Socioambiental
+                dos Agrupamentos Indígenas</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="descricao" class="content-section">
+        <h2>Descrição Geral do Projeto</h2>
+        <p>Este repositório apresenta os resultados de uma metodologia inovadora para o monitoramento de ameaças
+          ambientais em territórios indígenas da Amazônia Legal. A iniciativa é fruto de uma colaboração entre o
+          Tribunal de Contas da União (TCU), o Programa de Pesquisa em Geocontrole do Instituto Serzedello Corrêa e a
+          pesquisadora Dra. Ana Claudia Rorato Vitor, associada ao Laboratório de Investigação em Sistemas
+          Socioambientais (LiSS) do Instituto Nacional de Pesquisas Espaciais (INPE).</p>
+        <p>O estudo busca responder aos desafios associados ao monitoramento e à proteção ambiental dos territórios
+          indígenas, por meio de uma abordagem original que integra dados públicos geoespaciais — sobre desmatamento,
+          degradação florestal, focos de calor e mineração — com informações demográficas do Censo 2022 (IBGE). A
+          metodologia proposta permite estimar a intensidade das pressões ambientais e classificar as Terras Indígenas e
+          os Agrupamentos Indígenas de acordo com os diferentes níveis de ameaça identificados.</p>
+        <p>Um dos principais avanços da pesquisa é o desenvolvimento de índices de sensibilidade e exposição ambiental
+          para as Terras Indígenas, bem como de índices de ameaça ambiental para os Agrupamentos Indígenas, considerando
+          múltiplas escalas espaciais. Essa abordagem supera os modelos tradicionais centrados exclusivamente nas TIs
+          como unidades territoriais, ao incorporar também o nível dos agrupamentos indígenas e da população residente,
+          conforme mapeado pelo Censo Demográfico de 2022 (IBGE).</p>
+        <p>Ao aplicar um sistema de ponderação espacial por faixas de distância e por tipo de ameaça, o método permite
+          ranquear os territórios indígenas conforme a intensidade das pressões ambientais, subsidiando a priorização de
+          áreas para a implementação de ações de proteção.</p>
+        <p>Ao consolidar dados inéditos em um modelo replicável e tecnicamente robusto, esta metodologia representa um
+          avanço significativo no campo do monitoramento socioambiental aplicado à governança territorial e à proteção
+          dos direitos dos povos indígenas na Amazônia.</p>
+      </section>
+
+      <section id="introducao" class="content-section" style="display:none;">
+        <h3>Introdução</h3>
+        <p>As Terras Indígenas (TIs) da Amazônia brasileira estão distribuídas em regiões marcadas por distintos
+          contextos de ocupação humana e níveis variados de degradação ambiental. A distribuição espacial das ameaças
+          ambientais é heterogênea nesta região, e os territórios indígenas enfrentam diferentes tipos e intensidades de
+          pressão, tanto em seu interior quanto em suas zonas de entorno (Rorato et al., 2021; 2022). Enquanto algumas
+          TIs localizam-se em áreas com elevado desmatamento e alta permeabilidade devido ao acesso denso por rodovias,
+          outras estão situadas em regiões mais preservadas, com densa cobertura florestal e menor acessibilidade. Da
+          mesma forma, algumas TIs são predominantemente afetadas pela mineração ilegal, enquanto outras sofrem mais com
+          a exploração madeireira ou com incêndios decorrentes de práticas agropecuárias e grilagem de terras.</p>
+        <p>Compreender como essas ameaças se distribuem interna e externamente às TIs é fundamental para o
+          desenvolvimento de políticas públicas eficazes de proteção territorial. O monitoramento sistemático das
+          ameaças ambientais permite a identificação das TIs mais pressionadas, contribuindo para a priorização de ações
+          de fiscalização, contenção e mitigação.</p>
+        <p>De acordo com a Constituição Federal do Brasil, as TIs são territórios demarcados para assegurar aos povos
+          indígenas o direito às suas terras tradicionais, ao seu sustento e à sua organização social. Além de seu papel
+          central na garantia desses direitos, as TIs desempenham função estratégica na conservação ambiental e na
+          definição de políticas territoriais e ambientais na Amazônia. No entanto, por serem unidades territoriais de
+          grande extensão, o monitoramento ambiental no nível da TI tende a ocultar variações locais na exposição das
+          populações indígenas às ameaças ambientais. Avaliações realizadas exclusivamente nessa escala mais ampla
+          permitem identificar a integridade ecológica da TI como um todo, mas não revelam o grau de exposição real das
+          comunidades residentes às ameaças existentes. Por exemplo, duas TIs podem apresentar a mesma área total de
+          mineração ilegal em seu interior, mas com populações distribuídas de forma desigual em relação à proximidade
+          dessas áreas degradadas — o que resulta em diferentes níveis de risco socioambiental.</p>
+        <p>Nesse contexto, um avanço central deste estudo é a incorporação dos Agrupamentos Indígenas como unidade de
+          análise. Esses agrupamentos — definidos pelo IBGE como conjuntos de 15 ou mais indígenas vivendo em uma ou
+          mais moradias contíguas, com vínculos familiares ou comunitários — foram mapeados com base no Censo
+          Demográfico de 2022 e estão localizados tanto dentro quanto fora das TIs, em áreas rurais e urbanas. Apesar de
+          representarem uma parcela significativa da população indígena no Brasil, esses agrupamentos nunca haviam sido
+          espacialmente analisados em relação à proximidade e à intensidade das ameaças ambientais. Ao descer para essa
+          escala mais fina de análise, torna-se possível identificar os agrupamentos mais pressionados e, portanto, as
+          populações indígenas em maior situação de risco socioambiental — subsidiando políticas públicas mais
+          direcionadas e efetivas.</p>
+        <p>Este estudo aborda os desafios da proteção ambiental em territórios indígenas na Amazônia Brasileira,
+          propondo uma metodologia inovadora para avaliar e priorizar a proteção desses territórios (TIs e Agrupamentos
+          Indígenas) com base em distintas ameaças ambientais. A abordagem integra dados geoespaciais – abrangendo
+          desmatamento, degradação florestal, incêndios e mineração – em múltiplas escalas espaciais, juntamente com
+          dados de TIs, Agrupamentos Indígenas e de população indígena do Censo de 2022 (IBGE). Ao combiná-los com um
+          sistema de ponderação flexível, o método permite a hierarquização de TIs, Agrupamentos Indígenas e das 25
+          coordenações regionais da FUNAI, de acordo com a pressão das ameaças ambientais.</p>
+        <p>Ao fornecer uma metodologia sistemática e replicável para monitoramento ambiental, este trabalho tem o
+          potencial de subsidiar a elaboração de políticas públicas, apoiar a alocação estratégica de recursos de
+          fiscalização e aumentar a proteção de territórios indígenas sob crescente pressão ambiental.</p>
+      </section>
+
+      <section id="ameacas-ambientais" class="content-section" style="display:none;">
+        <h3>Ameaças ambientais</h3>
+        <p>As Terras Indígenas (TIs) localizadas na Amazônia Legal estão expostas a múltiplas ameaças ambientais,
+          compreendidas como processos ou atividades degradantes que comprometem a integridade ecológica dos territórios
+          (Rorato et al., 2021). Essas ameaças impactam diretamente os ecossistemas e os modos de vida dos povos
+          indígenas. Entre as principais ameaças ambientais sobre esses territórios destacam-se o desmatamento por corte
+          raso, a degradação florestal, os incêndios florestais e a mineração ilegal (Rorato et al., 2022).</p>
+        <p>O desmatamento por corte-raso configura-se como uma ameaça ambiental relevante na região amazônica, sendo o
+          mais importante impulsionador da mudança do funcionamento, da composição e do equilíbrio dos ecossistemas. Em
+          geral, o desmatamento leva à destruição de habitats e ao esgotamento de espécies, causa erosão e redução da
+          fertilidade do solo e leva ao assoreamento de corpos d’água e à seca das nascentes dos rios. Nas TIs, o
+          desmatamento compromete diretamente a segurança alimentar e o modo de vida tradicional dos povos indígenas, ao
+          reduzir a disponibilidade de recursos como animais, peixes, frutas, árvores utilizadas na construção e plantas
+          medicinais.</p>
+        <p>A degradação florestal, diferentemente do desmatamento por corte-raso, é caracterizada pelo processo mais
+          difuso e gradual de remoção da cobertura florestal. Resulta, sobretudo, da extração seletiva de madeira e da
+          ocorrência recorrente de incêndios florestais de baixa intensidade, que reduzem a cobertura vegetal e
+          enfraquecem a estrutura ecológica da floresta. A exploração madeireira ilegal tem sido uma das principais
+          causas da degradação florestal dentro das TIs amazônicas e de conflitos violentos entre povos indígenas e
+          madeireiros. Além disso, áreas degradadas tornam-se mais vulneráveis ao fogo devido às alterações
+          microclimáticas que aumentam a temperatura e reduzem a umidade do sub-bosque.</p>
+        <p>Os incêndios florestais, por sua vez, configuram uma ameaça crescente, especialmente em anos de estiagem
+          severa, que têm se intensificado com as mudanças climáticas. Esses incêndios, muitas vezes iniciados
+          ilegalmente nas áreas de entorno das TIs, podem adentrar os territórios e causar perdas significativas de
+          cobertura vegetal, biodiversidade, infraestrutura comunitária e até aldeias inteiras. Além dos impactos
+          ecológicos, os incêndios comprometem a saúde das populações indígenas, provocando doenças respiratórias e
+          outros agravos. O aumento da frequência e da intensidade desses eventos exige ações contínuas de
+          monitoramento, prevenção e resposta, por parte de brigadistas, da FUNAI e de outras instituições competentes.
+        </p>
+        <p>A mineração ilegal constitui uma das ameaças mais complexas e destrutivas, não apenas pelo desmatamento e
+          pela contaminação dos ecossistemas com mercúrio e outros poluentes, mas também pelos conflitos e riscos
+          sociais que gera. Essa atividade tem se expandido aceleradamente sobre as TIs amazônicas, associada à
+          degradação de rios e à introdução de dinâmicas violentas, como tráfico, aliciamento de trabalhadores e
+          exploração sexual (Rorato et al., 2020; Villén-Pérez et al., 2020). Historicamente, a mineração atua como
+          atividade precursora de outras pressões, abrindo caminho para o avanço da grilagem, da pecuária e do mercado
+          ilegal de terras. O número de áreas desmatadas para mineração em TIs tem aumentado significativamente nos
+          últimos anos, representando uma ameaça direta à integridade física e cultural das populações indígenas
+          afetadas.</p>
+      </section>
+
+      <section id="motivacao-objetivo" class="content-section" style="display:none;">
+        <h3>Motivação e Objetivo</h3>
+        <p>A expansão de atividades econômicas na Amazônia brasileira tem intensificado as pressões sobre os territórios
+          indígenas. O avanço do desmatamento ilegal, da mineração predatória, das invasões territoriais e da exploração
+          desregulada de recursos naturais vem acompanhado de graves conflitos fundiários, degradação ambiental e
+          violência contra os povos indígenas. Essas dinâmicas ameaçam não apenas os ecossistemas protegidos pelas
+          Terras Indígenas (TIs), mas também os modos de vida, os saberes tradicionais e a integridade física e cultural
+          das populações que ali vivem.</p>
+        <p>Neste contexto de crescente pressão sobre os territórios indígenas da Amazônia Legal, o presente estudo
+          propõe o desenvolvimento de uma metodologia inovadora, replicável e baseada em dados públicos para a avaliação
+          sistemática das ameaças ambientais que afetam tanto as Terras Indígenas (TIs) quanto os Agrupamentos
+          Indígenas. A proposta combina as melhores práticas da literatura com uma abordagem inédita em escala local,
+          permitindo descer da análise tradicional do território formal das TIs para o nível dos Agrupamentos Indígenas
+          — unidades mapeadas pelo Censo Demográfico de 2022 (IBGE), até então negligenciadas em diagnósticos de risco
+          socioambiental.</p>
+        <p>Ao integrar dados geoespaciais sobre desmatamento, degradação florestal, incêndios e mineração com
+          informações demográficas e territoriais, a metodologia desenvolvida busca mapear e ranquear os territórios
+          indígenas mais pressionados em multíplas escalas espaciais, oferecendo subsídios técnicos concretos para ações
+          de proteção mais justas, eficazes e territorialmente direcionadas.</p>
+        <p>O estudo parte das seguintes perguntas de pesquisa:</p>
+        <ul>
+          <li>Qual é o nível de sensibilidade ambiental e exposição das Terras Indígenas na Amazônia Legal às principais
+            ameaças — desmatamento, degradação florestal, queimadas e mineração ilegal — entre 2018 e 2023?</li>
+          <li>Como as 387 Terras Indígenas e as 25 Coordenações Regionais da FUNAI podem ser ranqueadas de acordo com o
+            grau de pressão ambiental que enfrentam, de modo a orientar a priorização de esforços de proteção
+            territorial?</li>
+          <li>Qual é o risco socioambiental que incide sobre os 6.223 Agrupamentos Indígenas da Amazônia Legal, e como
+            esses agrupamentos podem ser priorizados com base na proximidade e intensidade das ameaças e no tamanho da
+            população, a fim de subsidiar ações estratégicas de proteção?</li>
+        </ul>
+        <p>Ao responder a essas questões, este estudo pretende contribuir com uma ferramenta analítica robusta e
+          acessível para órgãos públicos, gestores ambientais e organizações indígenas, fortalecendo a governança
+          territorial e a proteção de direitos na Amazônia.</p>
+      </section>
+
+      <section id="base-dados" class="content-section" style="display:none;">
+        <h2>Bases de Dados</h2>
+        <ol>
+          <li>Limites espaciais oficiais das terras indígenas:
+            <ul>
+              <li>FUNAI - Fundação Nacional dos Povos Indígenas. Terras Indígenas. Conjunto de dados georreferenciados,
+                2023. Disponível em: <a
+                  href="https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas"
+                  target="_blank">https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas</a>
+              </li>
+            </ul>
+          </li>
+          <li>Dados de desmatamento do sistema PRODES do INPE:
+            <ul>
+              <li>INSTITUTO NACIONAL DE PESQUISAS ESPACIAIS. COORDENAÇÃO-GERAL DE CIÊNCIAS DA TERRA. PROGRAMA DE
+                MONITORAMENTO DOS BIOMAS BRASILEIROS. Prodes – Monitoramento Anual da Supressão da Vegetação Nativa –
+                Amazônia, 2024. Disponível em: http://terrabrasilis.dpi.inpe.br/downloads/. <a
+                  href="http://terrabrasilis.dpi.inpe.br/downloads/."
+                  target="_blank">http://terrabrasilis.dpi.inpe.br/downloads/.</a></li>
+            </ul>
+          </li>
+          <li>Dados de degradação florestal do sistema DETER do INPE:
+            <ul>
+              <li>INSTITUTO NACIONAL DE PESQUISAS ESPACIAIS. COORDENAÇÃO-GERAL DE CIÊNCIAS DA TERRA. PROGRAMA DE
+                MONITORAMENTO DOS BIOMAS BRASILEIROS. Deter – Monitoramento Diário da Supressão e Degradação da
+                Vegetação Nativa – Alertas – Amazônia, 2024. Disponível em: <a
+                  href="http://terrabrasilis.dpi.inpe.br/downloads/."
+                  target="_blank">http://terrabrasilis.dpi.inpe.br/downloads/.</a></li>
+            </ul>
+          </li>
+          <li>Dados de focos de calor do sistema BDQueimadas do INPE:
+            <ul>
+              <li>INPE - Instituto Nacional de Pesquisas Espaciais. Banco de Dados de Queimadas. Focos de Calor.
+                Disponível em: <a href="http://terrabrasilis.dpi.inpe.br/queimadas/portal/."
+                  target="_blank">http://terrabrasilis.dpi.inpe.br/queimadas/portal/.</a></li>
+            </ul>
+          </li>
+          <li>Dados de mineração mapeados pelo projeto MAPBIOMAS:
+            <ul>
+              <li>
+                Projeto MapBiomas - Mapeamento da superfície de mineração industrial e garimpo no Brasil - Coleção 9.
+                Disponível em: <a
+                  href="https://brasil.mapbiomas.org/wp-content/uploads/sites/4/2023/12/Fact_Sheet_Mineracao.pdf"
+                  target="_blank">https://brasil.mapbiomas.org/wp-content/uploads/sites/4/2023/12/Fact_Sheet_Mineracao.pdf</a>
+              </li>
+            </ul>
+          </li>
+          <li>Dados dos agrupamentos indígenas oriundos do Censo Demográfico 2022 do IBGE:
+            <ul>
+              <li>
+                Instituto Brasileiro de Geografia e Estatística (IBGE). Censo Demográfico 2022: Localidades Indígenas,
+                Agregados por setores censitários. Rio de Janeiro: IBGE; 2024. Disponível em: Localidades Indígenas >
+                Agregados por setores censitários > Malha com Atributos > Setores > Brasil. <a
+                  href="https://www.ibge.gov.br/estatisticas/sociais/saude/22827-censo-demografico-2022.html?edicao=42270&t=downloads"
+                  target="_blank">https://www.ibge.gov.br/estatisticas/sociais/saude/22827-censo-demografico-2022.html?edicao=42270&t=downloads</a>
+              </li>
+            </ul>
+          </li>
+      </section>
+
+      <section id="calculo-indice-sensibilidade-exposicao" class="content-section" style="display:none;">
+        <h2>Cálculo dos índices de sensibilidade e exposição ambiental nas Terras Indígenas da Amazônia Legal</h2>
+        <p>A metodologia proposta baseia-se no arcabouço teórico-metodológico de vulnerabilidade desenvolvido pelo
+          Painel Intergovernamental sobre Mudanças Climáticas (IPCC) e adaptado por Rorato et al. (2022) para avaliar a
+          vulnerabilidade ambiental das Terras Indígenas (TIs) na Amazônia Legal brasileira. A partir dessa abordagem,
+          adotamos e refinamos o método proposto por Rorato et al. (2022) para medir dois componentes-chave da
+          vulnerabilidade: sensibilidade ambiental e exposição ambiental. Nessa perspectiva, as ameaças que ocorrem
+          dentro das Terras Indígenas são interpretadas como fatores que aumentam a sensibilidade ambiental, pois
+          impactam diretamente a integridade ecológica do território. Em contraste, as ameaças que ocorrem ao redor das
+          Terras Indígenas são interpretadas como fatores que aumentam a exposição ambiental, por representarem pressões
+          externas na paisagem do entorno. Para avaliar esses componentes, foram calculados indicadores ambientais tanto
+          dentro dos limites oficiais das TIs quanto em uma zona de amortecimento de 10 km ao redor de cada TI. Essa
+          análise em dupla escala permite quantificar as pressões internas e externas sobre cada TI e responde
+          diretamente às perguntas científicas 1 e 2 deste estudo.</p>
+        <p>Para isso, foi desenvolvida uma base de dados espacial e calculados indicadores de ameaças ambientais para
+          cada Terra Indígena e sua zona de amortecimento de 10 km, utilizando bases geoespaciais de desmatamento,
+          degradação florestal, focos de calor e atividade minerária, conforme detalhado na próxima seção. Os limites
+          oficiais das Terras Indígenas foram obtidos da Fundação Nacional dos Povos Indígenas (FUNAI, 2024).</p>
+        <h3>Indicadores de Ameaças Ambientais</h3>
+        <p>Os dados anuais de desmatamento por corte raso foram obtidos do Programa de Monitoramento do Desmatamento na
+          Amazônia Legal (PRODES) do Instituto Nacional de Pesquisas Espaciais (INPE) (INPE, 2024). O PRODES monitora o
+          desmatamento por corte raso (remoção completa da floresta) em áreas florestais da Amazônia Legal por meio de
+          imagens de satélite desde 1988. No PRODES, o desmatamento é definido como a remoção total da cobertura
+          florestal primária e é mapeado para polígonos maiores que 6,25 hectares. O sistema utiliza principalmente
+          imagens dos satélites LANDSAT 8/OLI, além de CBERS 4 e IRS-2, com resoluções espaciais entre 20 e 30 metros e
+          intervalos de revisita de 5 a 16 dias. Com base nesses dados, o indicador quantifica a porcentagem da área
+          desmatada dentro de cada Terra Indígena e em sua zona de amortecimento no período de 2018 a 2023 (Tabela 1).
+        </p>
+        <p>Os dados de degradação florestal foram obtidos do Sistema de Detecção de Desmatamento em Tempo Real
+          (DETER-B), também desenvolvido pelo INPE (INPE, 2024). A degradação florestal é definida como a perda gradual
+          da cobertura florestal devido à extração seletiva de madeira e ao fogo, afetando áreas de pelo menos 6,25
+          hectares que não se enquadram como desmatamento por corte raso segundo o PRODES. Esse indicador estima a
+          porcentagem da área de cada Terra Indígena e de sua zona de amortecimento afetada por degradação florestal
+          entre 2018 e 2023 (Tabela 1). O indicador de degradação inclui três categorias distintas de distúrbios:
+          degradação, extração seletiva de madeira e cicatrizes de fogo, conforme identificadas pelo sistema DETER-B.
+        </p>
+        <p>Os dados sobre focos de calor foram obtidos do Banco de Dados de Monitoramento de Queimadas do INPE
+          (BDQueimadas), que fornece informações diárias derivadas de imagens de satélite coletadas pelo satélite de
+          referência AQUA_M-T (sensor MODIS) (INPE, 2024). É esse o satélite cuja série histórica diária de focos de
+          calor é utilizada para compilar séries temporais, permitindo a análise de tendências no número de focos dentro
+          das mesmas regiões e entre regiões em períodos de interesse. O indicador mede a densidade de focos de calor
+          detectados dentro de cada Terra Indígena e em sua zona de amortecimento entre 2018 e 2023 (Tabela 1).</p>
+        <p>Os dados sobre atividades de mineração industrial e artesanal foram derivados dos mapas de uso e cobertura da
+          terra produzidos pelo projeto MapBiomas. O MapBiomas iniciou o mapeamento das atividades de mineração na
+          Coleção 6 (2021), utilizando técnicas de aprendizado profundo (deep learning) e bases de referência do Serviço
+          Geológico do Brasil (CPRM), da Câmara de Comércio e Indústria Brasil-Alemanha (AHK Brasilien), do INPE e do
+          Instituto Socioambiental (ISA). Para este estudo, foi utilizada a base de dados mais recente, a Coleção 9,
+          referente ao ano de 2023. Esse indicador estima a proporção da área total de cada Terra Indígena e de sua zona
+          de amortecimento afetada por atividade minerária (tanto industrial quanto artesanal) (Tabela 1).</p>
+        <p><strong>Tabela 1.</strong> Descrição dos indicadores utilizados para avaliar a exposição e a sensibilidade
+          das Terras Indígenas (TIs) ao desmatamento, à degradação florestal, ao fogo e à mineração, incluindo o método
+          de quantificação, o período de análise e as fontes de dados.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Componente</th>
+              <th>Indicador</th>
+              <th>Quantificação</th>
+              <th>Período</th>
+              <th>Fonte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="4">Exposição</td>
+              <td>Desmatamento</td>
+              <td>Área desmatada acumulada na zona de amortecimento (%)</td>
+              <td>2018-2023</td>
+              <td>Prodes/INPE</td>
+            </tr>
+            <tr>
+              <td>Degradação florestal</td>
+              <td>Área acumulada de degradação florestal na zona de amortecimento (%)</td>
+              <td>2018-2023</td>
+              <td>Deter/INPE</td>
+            </tr>
+            <tr>
+              <td>Fogo</td>
+              <td>Densidade de focos de calor acumulados na zona de amortecimento</td>
+              <td>2018-2023</td>
+              <td>BDQueimadas/INPE</td>
+            </tr>
+            <tr>
+              <td>Mineração</td>
+              <td>Área de mineração na zona de amortecimento (%)</td>
+              <td>2023</td>
+              <td>MapBiomas</td>
+            </tr>
+            <tr>
+              <td rowspan="4">Sensibilidade</td>
+              <td>Desmatamento</td>
+              <td>Área desmatada acumulada na TI (%)</td>
+              <td>2018-2023</td>
+              <td>Prodes/INPE</td>
+            </tr>
+            <tr>
+              <td>Degradação florestal</td>
+              <td>Área acumulada de degradação florestal na TI (%)</td>
+              <td>2018-2023</td>
+              <td>Deter/INPE</td>
+            </tr>
+            <tr>
+              <td>Fogo</td>
+              <td>Densidade de focos de calor acumulados na TI</td>
+              <td>2018-2023</td>
+              <td>BDQueimadas/INPE</td>
+            </tr>
+            <tr>
+              <td>Mineração</td>
+              <td>Área de mineração na TI (%)</td>
+              <td>2023</td>
+              <td>MapBiomas</td>
+            </tr>
+            <tr>
+              <td rowspan="4">Exposição</td>
+              <td>Desmatamento</td>
+              <td>Área desmatada acumulada na zona de amortecimento (%)</td>
+              <td>2018-2023</td>
+              <td>Prodes/INPE</td>
+            </tr>
+            <tr>
+              <td>Degradação florestal</td>
+              <td>Área acumulada de degradação florestal na zona de amortecimento (%)</td>
+              <td>2018-2023</td>
+              <td>Deter/INPE</td>
+            </tr>
+            <tr>
+              <td>Fogo</td>
+              <td>Densidade de focos de calor acumulados na zona de amortecimento</td>
+              <td>2018-2023</td>
+              <td>BDQueimadas/INPE</td>
+            </tr>
+            <tr>
+              <td>Mineração</td>
+              <td>Área de mineração na zona de amortecimento (%)</td>
+              <td>2023</td>
+              <td>MapBiomas</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Os indicadores de sensibilidade e exposição calculados para cada ameaça ambiental permitem a classificação
+          das Terras Indígenas (TIs) de acordo com as pressões específicas que enfrentam. Para integrar esses
+          indicadores individuais em uma avaliação mais ampla, aplicamos um método de combinação linear ponderada com
+          abordagem aditiva, conforme proposto por Rorato et al. (2022), gerando um Índice Composto que representa a
+          sensibilidade e exposição geral de cada TI (Eq. 1). Esse método permite a incorporação de pesos que refletem a
+          importância relativa ou o impacto de cada ameaça.</p>
+        <p>Para definir esses pesos, adaptamos os valores estabelecidos em Rorato et al. (2022), no qual dez
+          especialistas classificaram as ameaças ambientais com base em sua percepção sobre a relevância delas sobre as
+          TIs. A partir dessa classificação, foram obtidas médias que foram transformadas linearmente em pesos (ver
+          coluna de Pesos na Tabela 1 de Rorato et al., 2022). Para o presente estudo, focamos em quatro ameaças
+          selecionadas e recalculamos os pesos proporcionalmente, somando os pesos originais dessas ameaças e dividindo
+          cada peso pelo valor total da soma. Esse ajuste preservou a importância relativa atribuída pelos
+          especialistas, ao mesmo tempo em que alinhou o esquema de ponderação ao escopo da análise atual (Tabela 2).
+        </p>
+        <p><strong>Tabela 2.</strong> Pesos proporcionais ajustados para as quatro ameaças ambientais selecionadas.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Indicador</th>
+              <th>Peso original (Rorato et al., 2022)</th>
+              <th>Pesos proporcionais ajustados</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Desmatamento</td>
+              <td>0.166</td>
+              <td>0.282</td>
+            </tr>
+            <tr>
+              <td>Degradação florestal</td>
+              <td>0.154</td>
+              <td>0.261</td>
+            </tr>
+            <tr>
+              <td>Fogo</td>
+              <td>0.098</td>
+              <td>0.166</td>
+            </tr>
+            <tr>
+              <td>Mineração</td>
+              <td>0.171</td>
+              <td>0.290</td>
+            </tr>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td><strong>0.589</strong></td>
+              <td><strong>1.000</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Nesse arcabouço, a abordagem aditiva consiste em somar os produtos de cada indicador de ameaça ambiental pelo
+          seu respectivo peso, conforme expresso nas equações abaixo. Isso permite a integração de múltiplas ameaças
+          ambientais em indicadores compostos de exposição (EX) e sensibilidade (SE), ponderados de acordo com sua
+          importância relativa.</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mi>EX</mi>
+          <mo>=</mo>
+          <munderover>
+            <mo>&#x2211;</mo>
+            <mi>i=m</mi>
+            <mi>n</mi>
+          </munderover>
+          <mo>(</mo>
+          <msub>
+            <mi>Vex</mi>
+            <mi>i</mi>
+          </msub>
+          <mo>&#x22C5;</mo>
+          <msub>
+            <mi>Wex</mi>
+            <mi>i</mi>
+          </msub>
+          <mo>)</mo>
+        </math>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mi>SE</mi>
+          <mo>=</mo>
+          <munderover>
+            <mo>&#x2211;</mo>
+            <mi>i=m</mi>
+            <mi>n</mi>
+          </munderover>
+          <mo>(</mo>
+          <msub>
+            <mi>Vse</mi>
+            <mi>i</mi>
+          </msub>
+          <mo>&#x22C5;</mo>
+          <msub>
+            <mi>Wse</mi>
+            <mi>i</mi>
+          </msub>
+          <mo>)</mo>
+        </math>
+        <p><i>Onde Vexi and Vsei são os valores normalizados dos indicadores de exposição e sensibilidade para a ameaça
+            i, e Wexi and Wsei são seus respectivos pesos.</i></p>
+        <p>O índice de impacto potencial das ameaças ambientais sobre as Terras Indígenas é definido como uma função
+          combinada dos seus índices de exposição e sensibilidade. Ele pode ser calculado por meio da seguinte equação
+          (Eq. 2):</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mi>PI</mi>
+          <mo>=</mo>
+          <mi>EX</mi>
+          <mo>+</mo>
+          <mi>SE</mi>
+        </math>
+        <p>Adicionalmente, também é possível aplicar ponderação no cálculo do índice de impacto potencial, atribuindo
+          pesos distintos aos componentes de exposição e sensibilidade, conforme ilustrado no exemplo abaixo:</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mi>PI</mi>
+          <mo>=</mo>
+          <mo>(</mo>
+          <mi>W</mi>
+          <mi>ex</mi>
+          <mo>&#x22C5;</mo>
+          <mi>EX</mi>
+          <mo>)</mo>
+          <mo>+</mo>
+          <mo>(</mo>
+          <mi>W</mi>
+          <mi>se</mi>
+          <mo>&#x22C5;</mo>
+          <mi>SE</mi>
+          <mo>)</mo>
+        </math>
+
+        <p><strong>Where:</strong></p>
+        <ul>
+          <li><strong>Wex</strong> = peso atribuído ao índice de exposição;</li>
+          <li><strong>Wse</strong> = peso atribuído ao índice de sensibilidade;</li>
+          <li><strong>PI</strong> = impacto potencial;</li>
+          <li><strong>EX</strong> e <strong>SE</strong> = índices de exposição e sensibilidade, respectivamente.</li>
+        </ul>
+      </section>
+
+      <section id="calculo-indice-ameaca-agrupamento" class="content-section" style="display:none;">
+        <h2>Cálculo dos índices de ameaça ambiental no entorno dos Agrupamentos Indígenas da Amazônia Legal</h2>
+        <p>Para responder à terceira pergunta científica, utilizamos dados sobre agrupamentos indígenas e tamanho
+          populacional do Censo Demográfico de 2022, realizado pelo Instituto Brasileiro de Geografia e Estatística
+          (IBGE). Nosso objetivo foi quantificar em que medida esses agrupamentos e suas populações residentes estão
+          expostos a ameaças ambientais. O Censo Demográfico de 2022 do IBGE mapeou dados sobre localidades indígenas,
+          definidas como todos os lugares no Território Nacional com concentração permanente de habitantes
+          autodeclarados indígenas. De acordo com os dados censitários, foram identificadas 8.568 localidades indígenas
+          em todo o Brasil. Esse número inclui todos os locais com presença indígena permanente na data de referência do
+          censo, abrangendo aldeias, comunidades, sítios, acampamentos, instituições de acolhimento e outras formas de
+          organização socioespacial dos povos indígenas.</p>
+        <p>Essas localidades indígenas foram classificadas em três categorias: (i) Terras Indígenas oficialmente
+          delimitadas, cujos limites dos setores censitários foram ajustados conforme necessário; (ii) agrupamentos
+          indígenas identificados pelo IBGE; e (iii) outras localidades indígenas associadas a ocupações dispersas,
+          indicando presença indígena confirmada ou potencial. Metodologicamente, qualquer local com pelo menos 15
+          indivíduos autodeclarados indígenas residentes em domicílios contíguos foi considerado uma localidade
+          indígena, com critérios específicos para contextos urbanos e rurais.</p>
+        <p>Dentro do conjunto mais amplo de localidades indígenas, o censo distinguiu os agrupamentos indígenas,
+          definidos como “um conjunto de 15 ou mais indígenas residentes em um ou mais domicílios espacialmente
+          contíguos, com vínculos familiares ou comunitários. Esses agrupamentos podem ocorrer em áreas rurais ou
+          urbanas, tanto dentro como fora de Terras Indígenas oficialmente delimitadas.” Identificados no nível de setor
+          censitário, esses agrupamentos constituem um subconjunto das localidades indígenas mapeadas em 2022. Os dados
+          sobre agrupamentos indígenas foram obtidos a partir do arquivo vetorial Localidades Indígenas &gt; Agregados
+          por setores censitários &gt; Malha com Atributos &gt; Setores &gt; Brasil, especificamente no campo de
+          atributo denominado “agrupamentos indígenas” (CD_TIPO = 5). Um total de 6.223 agrupamentos indígenas estão
+          localizados na região da Amazônia Legal brasileira (Fig. 1). Juntamente com os dados espaciais, o censo
+          forneceu informações populacionais, incluindo população total e número de domicílios, que foram incorporadas à
+          análise de risco socioambiental para avaliar a exposição das populações indígenas às ameaças ambientais.</p>
+        <figure>
+          <img src="images/Fig_01_secao_2.3_setores_censitarios_agrupamentos_indigenas_artigo.jpg"
+            alt="Distribuição espacial dos 6.223 agrupamentos indígenas do Censo IBGE 2022 na Amazônia Legal brasileira.">
+          <figcaption>Figura 1. Distribuição espacial dos 6.223 agrupamentos indígenas do Censo IBGE 2022 na Amazônia
+            Legal brasileira.</figcaption>
+        </figure>
+        <p>Ao integrar dados espaciais sobre ameaças ambientais, agrupamentos indígenas e população total do Censo
+          Demográfico de 2022 do IBGE, desenvolvemos uma avaliação de ameaças socioambientais em nível de agrupamento
+          indígena. Essa abordagem permite a classificação dos agrupamentos em toda a Amazônia com base tanto na
+          intensidade quanto na proximidade das pressões ambientais ao redor. A metodologia é descrita a seguir,
+          combinando indicadores geoespaciais de ameaças com parâmetros ponderados e oferecendo aplicações práticas para
+          órgãos públicos que buscam priorizar ações de proteção e mitigação em territórios indígenas.</p>
+
+        <h3>2.3.1 Índices de Ameaças Ambientais Ponderados por Distância</h3>
+        <p>As unidades geográficas de análise foram os agrupamentos indígenas identificados no Censo Demográfico de 2022
+          do IBGE. Para cada agrupamento, foram geradas três zonas de buffer no seu entorno (0–5 km, 5–10 km e 10–25 km)
+          a partir do centróide de seu polígono. Essas zonas representam gradientes espaciais das pressões ambientais no
+          entorno, permitindo a quantificação das ameaças ambientais em diferentes distâncias de cada agrupamento (Fig.
+          2).</p>
+        <figure>
+          <img src="images/Fig_02_buffers_agrupamentos_indigenas.jpg"
+            alt="Zonas de buffer concêntricas dos agrupamentos indígenas">
+          <figcaption>Figura 2. Zonas de buffer concêntricas (0–5 km, 5–10 km e 10–25 km) foram geradas a partir dos
+            centróides dos polígonos dos agrupamentos indígenas (IBGE 2022), representando gradientes espaciais de
+            pressão externa.</figcaption>
+        </figure>
+        <p>Ameaças ambientais — desmatamento, degradação florestal, mineração e fogo — foram quantificadas spatialmente
+          dentro de cada zona de buffer, seguindo os procedimentos descritos na Tabela 1. Para considerar a influência
+          decrescente das ameaças com a distância, aplicamos um esquema de ponderação por distância:</p>
+        <ul>
+          <li>0–5 km = 0,5</li>
+          <li>5–10 km = 0,3</li>
+          <li>10–25 km = 0,2</li>
+        </ul>
+        <p>Utilizando esse esquema, construímos quatro Índices de Ameaças Ambientais Ponderados por Distância,
+          representando a intensidade da pressão do desmatamento, da degradação florestal, da mineração e do fogo ao
+          redor de cada agrupamento indígena, ajustados pela proximidade. Esses índices foram calculados da seguinte
+          forma:</p>
+        <ul>
+          <li><strong>IDefor</strong> (Índice Ponderado de Desmatamento):<br>
+            IDefor = (Defor₀₋₅km × 0.5) + (Defor₅₋₁₀km × 0.3) + (Defor₁₀₋₂₅km × 0.2)
+          </li>
+          <li><strong>IDegrad</strong> (Índice Ponderado de Degradação Florestal):<br>
+            IDegrad = (Degrad₀₋₅km × 0.5) + (Degrad₅₋₁₀km × 0.3) + (Degrad₁₀₋₂₅km × 0.2)
+          </li>
+          <li><strong>IMining</strong> (Índice Ponderado de Mineração):<br>
+            IMining = (Mining₀₋₅km × 0.5) + (Mining₅₋₁₀km × 0.3) + (Mining₁₀₋₂₅km × 0.2)
+          </li>
+          <li><strong>IFire</strong> (Índice Ponderado de Fogo):<br>
+            IFire = (Fire₀₋₅km × 0.5) + (Fire₅₋₁₀km × 0.3) + (Fire₁₀₋₂₅km × 0.2)
+          </li>
+        </ul>
+        <p>Esses índices fornecem uma medida padronizada e comparável das ameaças ambientais que incidem sobre os
+          agrupamentos indígenas, com ênfase na proximidade das ameaças em relação aos territórios indígenas.</p>
+
+        <h3>2.3.2 Índice Composto de Ameaças Ambientais (CETI)</h3>
+        <p>Na segunda etapa, os Índices Individuais de Ameaças Ambientais Ponderadas por Distância (IDefor, IDegrad,
+          IMining, IFire) foram agregados em uma única medida composta: o Índice Composto de Ameaças Ambientais (CETI).
+          Esse índice reflete a pressão ambiental cumulativa ao redor dos agrupamentos indígenas. Como diferentes
+          ameaças afetam as populações indígenas de maneiras distintas, a agregação incorpora ponderações diferenciadas
+          para refletir sua importância relativa. Cada índice normalizado específico por ameaça (IDefor_norm,
+          IDegrad_norm, IMining_norm e IFire_norm) foi multiplicado por um peso derivado de ponderações atribuídas por
+          especialistas, adaptadas de Rorato et al. (2022), conforme mostrado na Tabela 2. O CETI foi então calculado
+          como a soma ponderada desses índices, de acordo com a seguinte expressão:</p>
+        <p><strong>CETI = (IDefornorm × 0.282) + (IDegradnorm × 0.261) + (IMiningnorm × 0.290) + (IFirenorm ×
+            0.166)</strong></p>
+        <p>Esse índice composto sintetiza a pressão ambiental cumulativa, incorporando tanto a intensidade quanto a
+          proximidade das ameaças ambientais. Valores mais altos do CETI indicam maior pressão ambiental, destacando
+          áreas prioritárias para mitigação, monitoramento ou proteção. A abordagem permite o ajuste dinâmico dos pesos
+          à medida que novos dados, contextos regionais ou prioridades surgem, e facilita a comunicação dos resultados a
+          formuladores de políticas e gestores ao consolidar ameaças diversas em uma métrica única e interpretável,
+          preservando, ao mesmo tempo, a contribuição individual de cada ameaça.</p>
+      </section>
+
+      <section id="calculo-priorizacao-socioambiental-agrupamentos" class="content-section" style="display:none;">
+        <h2>Priorização socioambiental dos Agrupamentos Indígenas da Amazônia Legal</h2>
+        <p>
+          Para identificar os agrupamentos indígenas prioritários para a proteção ambiental na Amazônia Brasileira,
+          desenvolvemos uma matriz baseada na combinação de dois indicadores: o índice normalizado de ameaças ambientais
+          ponderadas por distância — composto por desmatamento (<code>IDefornorm</code>), degradação florestal
+          (<code>IDegradnorm</code>), mineração (<code>IMiningnorm</code>) e fogo (<code>IFirenorm</code>) — e o tamanho
+          populacional normalizado (<code>Popnorm</code>). Cada indicador foi dividido independentemente em quintis (Q1
+          a Q5), com base em suas distribuições empíricas. Os agrupamentos indígenas foram então classificados em um
+          quintil específico para ambos os indicadores, resultando em 25 combinações possíveis (por exemplo, Q1–1 a
+          Q5–5), onde a notação "Qx–y" se refere ao quintil do índice de ameaça (<code>x</code>) e da população
+          (<code>y</code>).
+        </p>
+        <p>
+          Para evitar distorções causadas por valores zero, especialmente nos índices de desmatamento e mineração, foi
+          implementada uma regra que atribui todos os casos com valor zero diretamente ao primeiro quintil
+          (<code>Q1</code>). Essa abordagem garante consistência e comparabilidade entre os agrupamentos.
+        </p>
+        <p>
+          A matriz resultante possibilita uma avaliação multidimensional dos agrupamentos indígenas prioritários,
+          destacando aqueles simultaneamente afetados por alta pressão ambiental e com alta população
+          (<code>Q5–5</code>), bem como outros contextos relevantes (por exemplo, baixa população, mas alta ameaça
+          ambiental). Essa classificação cruzada por quintis foi visualizada por meio de um gráfico de dispersão com os
+          valores transformados em logaritmo, sobreposto por linhas de grade de quintis e uma legenda codificada por
+          cores representando os 25 grupos únicos, oferecendo uma estrutura intuitiva para a identificação de
+          agrupamentos prioritários.
+        </p>
+        <p>
+          Além do gráfico de dispersão, foi desenvolvido um mapa temático para visualizar a distribuição espacial dos
+          agrupamentos indígenas com base em sua classificação combinada de quintis. A mesma paleta personalizada de 25
+          cores foi aplicada para representar cada combinação de quintis, variando de <code>Q1–1</code> a
+          <code>Q5–5</code>. Os centróides de cada polígono de agrupamento indígena foram extraídos e plotados como
+          pontos no mapa. O mapa fornece uma visão espacial da matriz de priorização, permitindo identificar padrões
+          geográficos e aglomerados de alta pressão socioambiental.
+        </p>
+        <p>
+          A mesma abordagem foi aplicada ao Índice Composto de Ameaças Ambientais (<code>CETI</code>), permitindo uma
+          priorização integrada baseada na pressão ambiental cumulativa e no tamanho da população. O gráfico de
+          dispersão e o mapa temático resultantes com base no <code>CETI</code> oferecem subsídios espaciais e
+          analíticos robustos para apoiar o planejamento territorial, o monitoramento, a formulação de políticas e a
+          tomada de decisão.
+        </p>
+      </section>
+
+      <section id="scripts-codigos-analise" class="content-section" style="display:none;">
+        <h2>Scripts e Códigos de Análise</h2>
+        <p>Todas as análises apresentadas neste estudo foram realizadas com o uso dos softwares FillCell, QGIS e ArcMap
+          para o processamento geoespacial, e do programa R para a análise de dados, cálculo de indicadores, e a
+          elaboração de tabelas, gráficos e mapas. A seguir, são disponibilizados os scripts utilizados nas análises,
+          com a descrição detalhada de cada etapa.</p>
+        <h3>Etapa 01 - Preenchimento das ameaças ambientais nas unidades de análise (TIs e buffers no entorno dos
+          agrupamentos indígenas)</h3>
+        <ul>
+          <li>
+            <a href="scripts/etapa_01/" target="_blank">
+              Scripts e arquivos Etapa 1
+            </a>
+          </li>
+        </ul>
+        <h3>Etapa 02 - Cálculo dos índices de sensibilidade e exposição ambiental das Terras Indígenas</h3>
+        <h4>Etapa 2.1 - Cálculo dos índices de sensibilidade ambiental das Terras Indígenas</h4>
+        <ul>
+          <li>
+            <a href="scripts/etapa_02/script_calculando_indices_sensibilidade_ambiental_e_rodando_analises.R" target="_blank">
+              script_calculando_indices_sensibilidade_ambiental_e_rodando_analises.R
+            </a>
+          </li>
+        </ul>
+        <h4>Etapa 2.2 - Cálculo dos índices de exposição ambiental das Terras Indígenas</h4>
+        <ul>
+          <li>
+            <a href="scripts/etapa_02/script_calculando_indicadores_exposicao_ambiental_BF.R" target="_blank">
+              script_calculando_indicadores_exposicao_ambiental_BF.R
+            </a>
+          </li>
+          <li>
+            <a href="scripts/etapa_02/script_rodando_analises_e_resultados_exposicao_ambiental_BF.R" target="_blank">
+              script_rodando_analises_e_resultados_exposicao_ambiental_BF.R
+            </a>
+          </li>
+        </ul>
+        <h3>Etapa 03 - Cálculo dos índices de ameaça ambiental no entorno dos agrupamentos indígenas e matriz de
+          priorização socioambiental</h3>
+        <h4>Etapa 3.1 - Scripts que calculam as variáveis que darão origem aos indicadores em cada uma das zonas de
+          buffer no entorno dos agrupamentos indígenas</h4>
+        <ul>
+          <li>
+            <a href="scripts/etapa_03/script_analises_agrup_indige_faixa_0_5km.R" target="_blank">
+              script_analises_agrup_indige_faixa_0_5km.R
+            </a>
+          </li>
+          <li>
+            <a href="scripts/etapa_03/script_analises_agrup_indige_faixa_0_10km.R" target="_blank">
+              script_analises_agrup_indige_faixa_0_10km.R
+            </a>
+          </li>
+          <li>
+            <a href="scripts/etapa_03/script_analises_agrup_indige_faixa_0_25km.R" target="_blank">
+              script_analises_agrup_indige_faixa_0_25km.R
+            </a>
+          </li>
+        </ul>
+        <h4>Etapa 3.2 - Script que combina os três shapefiles das três zonas de buffer concêntricas no entorno dos
+          agrupamentos indígenas e calcula os indicadores</h4>
+        <ul>
+          <li>
+            <a href="scripts/etapa_03/script_analises_agrup_indige_calculando_indicadores.R" target="_blank">
+              script_analises_agrup_indige_calculando_indicadores.R
+            </a>
+          </li>
+        </ul>
+        <h4>Etapa 3.3 - Priorização socioambiental dos agrupamentos indígenas</h4>
+        <ul>
+          <li>
+            <a href="scripts/etapa_03/analises_buffers_indices_finais_priorizacao_socioambiental.R" target="_blank">
+              analises_buffers_indices_finais_priorizacao_socioambiental.R
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section id="resultados" class="content-section" style="display:none;">
+        <h2>Resultados</h2>
+      </section>
+
+      <section id="indice-sensibilidade-ambiental" class="content-section" style="display:none;">
+        <h3>Índice de Sensibilidade Ambiental das Terras Indígenas</h3>
+        <div class="carousel">
+          <figure class="slide">
+            <img src="images/Figura_01_mapa_indice_sensibilidade_desmatamento_2018-2023_PORT.png"
+              alt="Figura 1 mapa indice sensibilidade desmatamento 2018-2023">
+            <figcaption>Figura 1. Índice de sensibilidade ao desmatamento nas Terras Indígenas da Amazônia Legal,
+              calculado a partir dos dados do PRODES/INPE (2018 a 2023).</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figura_02_mapa_indice_sensibilidade_degradacao_2018-2023_PORT.png"
+              alt="Figura 2 mapa indice sensibilidade degradacao 2018-2023">
+            <figcaption>Figura 2. Índice de sensibilidade à degradação florestal nas Terras Indígenas da Amazônia Legal,
+              produzido a partir dos dados do DETER/INPE (2018 a 2023).</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figura_03_mapa_indice_sensibilidade_fogo_2018-2023_PORT.png"
+              alt="Figura 3 mapa indice sensibilidade fogo 2018-2023">
+            <figcaption>Figura 3. Índice de sensibilidade ao fogo nas Terras Indígenas da Amazônia Legal, produzido a
+              partir dos dados do BDQueimadas/INPE (2018 a 2023).</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figura_04_mapa_indice_sensibilidade_mineracao_2018-2023_PORT.png"
+              alt="Figura 4 mapa indice sensibilidade mineracao 2018-2023">
+            <figcaption>Figura 4. Índice de sensibilidade à mineração nas Terras Indígenas da Amazônia Legal, produzido
+              a partir dos dados do MapBiomas entre (2018 a 2023).</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figura_05_mapa_indice_sensibilidade_2018-2023_PORT.png"
+              alt="Figura 5 mapa indice sensibilidade todos normalizados 2018-2023">
+            <figcaption>Figura 5. Índice composto de sensibilidade ambiental nas TI da Amazônia Legal, produzido a
+              partir dos índices de sensibilidade ao desmatamento, à degradação ambiental, ao fogo e à mineração entre
+              2018 e 2023. </figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figura_06_grafico_ranking_mediana_indice_sensibilidade_crs.png"
+              alt="Figura 6 grafico ranking mediana indice sensibilida e crs">
+            <figcaption>Figura 6. Gráfico da classificação das Coordenações Regionais (CR) ordenadas em ordem
+              decrescente pelo Índice composto de sensibilidade ambiental (mediana), produzido a partir dos índices de
+              sensibilidade ao desmatamento, à degradação florestal, ao fogo e à mineração entre 2018 e 2023.
+            </figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figura_07_mapa_mediana_indice_sensibilidade_ambiental_2018-2023_PORT.png"
+              alt="Figura 7 mapa mediana indice sensibilidade ambiental 2018-2023">
+            <figcaption>Figura 7. Mapa da classificação das Coordenações Regionais (CR) ordenadas pelo Índice composto
+              de sensibilidade ambiental (mediana), produzido a partir dos índices de sensibilidade ao desmatamento, à
+              degradação florestal, ao fogo e à mineração entre 2018 e 2023. </figcaption>
+          </figure>
+          <div class="slide table container">
+            <h4>Tabela Completa por TI indice sensibilidade ambiental 2018-2023</h4>
+            <table>
+              <tr>
+                <th>gid</th>
+                <th>terrai_nom</th>
+                <th>undadm_sig</th>
+                <th>sensib</th>
+              </tr>
+              <tr>
+                <td>1218</td>
+                <td>Barreira da Missão</td>
+                <td>CR-AS</td>
+                <td>0,355424021</td>
+              </tr>
+              <tr>
+                <td>1266</td>
+                <td>Cuia</td>
+                <td>CR-MAO</td>
+                <td>0,3222559416</td>
+              </tr>
+              <tr>
+                <td>212</td>
+                <td>Ituna/Itatá (restrição de uso)</td>
+                <td>CR-CLPA</td>
+                <td>0,3106238801</td>
+              </tr>
+              <tr>
+                <td>51</td>
+                <td>Baía dos Guató</td>
+                <td>CR-CGB</td>
+                <td>0,2985270905</td>
+              </tr>
+              <tr>
+                <td>1690</td>
+                <td>Las Casas</td>
+                <td>CR-KSPA</td>
+                <td>0,2825547147</td>
+              </tr>
+              <tr>
+                <td>274</td>
+                <td>Pequizal</td>
+                <td>CR-CGB</td>
+                <td>0,2777517288</td>
+              </tr>
+              <tr>
+                <td>394</td>
+                <td>Sissaíma</td>
+                <td>CR-MAO</td>
+                <td>0,2731177304</td>
+              </tr>
+              <tr>
+                <td>304</td>
+                <td>Urubu Branco</td>
+                <td>CR-ATO</td>
+                <td>0,2587982511</td>
+              </tr>
+              <tr>
+                <td>285</td>
+                <td>Cana Brava/Guajajara</td>
+                <td>CR-MA</td>
+                <td>0,248886276</td>
+              </tr>
+              <tr>
+                <td>1482</td>
+                <td>Paracuhuba</td>
+                <td>CR-MAO</td>
+                <td>0,2438725963</td>
+              </tr>
+              <tr>
+                <td>273</td>
+                <td>Turé/Mariquita</td>
+                <td>CR-BTO</td>
+                <td>0,2360245957</td>
+              </tr>
+              <tr>
+                <td>325</td>
+                <td>Maraiwatsede</td>
+                <td>CR-RC</td>
+                <td>0,2233340004</td>
+              </tr>
+              <tr>
+                <td>303</td>
+                <td>Sararé</td>
+                <td>CR-CGB</td>
+                <td>0,2128792443</td>
+              </tr>
+              <tr>
+                <td>1503</td>
+                <td>Perigara</td>
+                <td>CR-CGB</td>
+                <td>0,2052936229</td>
+              </tr>
+              <tr>
+                <td>1562</td>
+                <td>Rodeador</td>
+                <td>CR-MA</td>
+                <td>0,2027422267</td>
+              </tr>
+              <tr>
+                <td>1565</td>
+                <td>Sai-Cinza</td>
+                <td>CR-TPJ</td>
+                <td>0,1988532906</td>
+              </tr>
+              <tr>
+                <td>1702</td>
+                <td>Sarauá</td>
+                <td>CR-BTO</td>
+                <td>0,1668629152</td>
+              </tr>
+              <tr>
+                <td>153</td>
+                <td>Kayapó</td>
+                <td>CR-KSPA</td>
+                <td>0,1630432317</td>
+              </tr>
+              <tr>
+                <td>1605</td>
+                <td>Terena Gleba Iriri</td>
+                <td>CR-NMT</td>
+                <td>0,1615503772</td>
+              </tr>
+              <tr>
+                <td>434</td>
+                <td>Sagarana</td>
+                <td>CR-GJM</td>
+                <td>0,156265721</td>
+              </tr>
+              <tr>
+                <td>69</td>
+                <td>Areões</td>
+                <td>CR-RC</td>
+                <td>0,1484336789</td>
+              </tr>
+              <tr>
+                <td>381</td>
+                <td>Tereza Cristina</td>
+                <td>CR-CGB</td>
+                <td>0,1449522547</td>
+              </tr>
+              <tr>
+                <td>1444</td>
+                <td>Meria</td>
+                <td>CR-AS</td>
+                <td>0,1409070872</td>
+              </tr>
+              <tr>
+                <td>286</td>
+                <td>Batelão</td>
+                <td>CR-NOMT</td>
+                <td>0,1403918909</td>
+              </tr>
+              <tr>
+                <td>127</td>
+                <td>Apyterewa</td>
+                <td>CR-CLPA</td>
+                <td>0,13194006</td>
+              </tr>
+              <tr>
+                <td>1481</td>
+                <td>Parabubure</td>
+                <td>CR-XAV</td>
+                <td>0,128623032</td>
+              </tr>
+              <tr>
+                <td>201</td>
+                <td>Pequizal do Naruvôtu</td>
+                <td>CR-XIN</td>
+                <td>0,1158067077</td>
+              </tr>
+              <tr>
+                <td>1453</td>
+                <td>Munduruku</td>
+                <td>CR-TPJ</td>
+                <td>0,1115217754</td>
+              </tr>
+              <tr>
+                <td>211</td>
+                <td>Parque do Xingu</td>
+                <td>CR-XIN</td>
+                <td>0,1028490821</td>
+              </tr>
+              <tr>
+                <td>339</td>
+                <td>Inawebohona</td>
+                <td>CR-ATO</td>
+                <td>0,1009276433</td>
+              </tr>
+              <tr>
+                <td>1219</td>
+                <td>Batovi</td>
+                <td>CR-XIN</td>
+                <td>0,09950606644</td>
+              </tr>
+              <tr>
+                <td>297</td>
+                <td>Trincheira</td>
+                <td>CR-MAO</td>
+                <td>0,09878117341</td>
+              </tr>
+              <tr>
+                <td>341</td>
+                <td>Kanela</td>
+                <td>CR-MA</td>
+                <td>0,09845262661</td>
+              </tr>
+              <tr>
+                <td>195</td>
+                <td>Karipuna</td>
+                <td>CR-JPR</td>
+                <td>0,09796315169</td>
+              </tr>
+              <tr>
+                <td>207</td>
+                <td>Krahó-Kanela</td>
+                <td>CR-ATO</td>
+                <td>0,08929125053</td>
+              </tr>
+              <tr>
+                <td>1455</td>
+                <td>Murutinga/Tracaja</td>
+                <td>CR-MAO</td>
+                <td>0,08906267826</td>
+              </tr>
+              <tr>
+                <td>28</td>
+                <td>Anambé</td>
+                <td>CR-BTO</td>
+                <td>0,08751708991</td>
+              </tr>
+              <tr>
+                <td>80</td>
+                <td>Merure</td>
+                <td>CR-CGB</td>
+                <td>0,08724644838</td>
+              </tr>
+              <tr>
+                <td>1677</td>
+                <td>Ponciano</td>
+                <td>CR-MAO</td>
+                <td>0,08636804331</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>Alto Rio Guamá</td>
+                <td>CR-BTO</td>
+                <td>0,08355531377</td>
+              </tr>
+              <tr>
+                <td>1381</td>
+                <td>Kaxinawá do Baixo Rio Jordão</td>
+                <td>CR-JUR</td>
+                <td>0,08275438722</td>
+              </tr>
+              <tr>
+                <td>1573</td>
+                <td>São Pedro</td>
+                <td>CR-MAO</td>
+                <td>0,08273633774</td>
+              </tr>
+              <tr>
+                <td>227</td>
+                <td>Sangradouro/Volta Grande</td>
+                <td>CR-XAV</td>
+                <td>0,08264083783</td>
+              </tr>
+              <tr>
+                <td>1654</td>
+                <td>Wawi</td>
+                <td>CR-XIN</td>
+                <td>0,08255464885</td>
+              </tr>
+              <tr>
+                <td>446</td>
+                <td>Lagoa Comprida</td>
+                <td>CR-MA</td>
+                <td>0,07565950415</td>
+              </tr>
+              <tr>
+                <td>374</td>
+                <td>Kanela Memortumré</td>
+                <td>CR-MA</td>
+                <td>0,07504018763</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Apiaka/Kayabi</td>
+                <td>CR-NOMT</td>
+                <td>0,07419858532</td>
+              </tr>
+              <tr>
+                <td>1602</td>
+                <td>Tembé</td>
+                <td>CR-BTO</td>
+                <td>0,07402648431</td>
+              </tr>
+              <tr>
+                <td>380</td>
+                <td>Marechal Rondon</td>
+                <td>CR-XAV</td>
+                <td>0,07333968331</td>
+              </tr>
+              <tr>
+                <td>1720</td>
+                <td>Maracaxi</td>
+                <td>CR-BTO</td>
+                <td>0,07324028382</td>
+              </tr>
+              <tr>
+                <td>142</td>
+                <td>Cachoeira Seca</td>
+                <td>CR-CLPA</td>
+                <td>0,07278302948</td>
+              </tr>
+              <tr>
+                <td>1447</td>
+                <td>Miratu</td>
+                <td>CR-AS</td>
+                <td>0,07225480115</td>
+              </tr>
+              <tr>
+                <td>268</td>
+                <td>Krenyê</td>
+                <td>CR-MA</td>
+                <td>0,07223356188</td>
+              </tr>
+              <tr>
+                <td>445</td>
+                <td>Amanayé</td>
+                <td>CR-BTO</td>
+                <td>0,07172100127</td>
+              </tr>
+              <tr>
+                <td>82</td>
+                <td>Xerente</td>
+                <td>CR-ATO</td>
+                <td>0,07008541441</td>
+              </tr>
+              <tr>
+                <td>501</td>
+                <td>Ubawawe</td>
+                <td>CR-XAV</td>
+                <td>0,06943460493</td>
+              </tr>
+              <tr>
+                <td>413</td>
+                <td>Funil</td>
+                <td>CR-ATO</td>
+                <td>0,06807528964</td>
+              </tr>
+              <tr>
+                <td>448</td>
+                <td>Governador</td>
+                <td>CR-MA</td>
+                <td>0,06805688296</td>
+              </tr>
+              <tr>
+                <td>46</td>
+                <td>Bacurizinho</td>
+                <td>CR-MA</td>
+                <td>0,06793305285</td>
+              </tr>
+              <tr>
+                <td>1369</td>
+                <td>Karajá Santana do Araguaia</td>
+                <td>CR-ATO</td>
+                <td>0,06753401392</td>
+              </tr>
+              <tr>
+                <td>209</td>
+                <td>Tubarão Latunde</td>
+                <td>CR-CGB</td>
+                <td>0,06660880625</td>
+              </tr>
+              <tr>
+                <td>1261</td>
+                <td>Chão Preto</td>
+                <td>CR-XAV</td>
+                <td>0,06574373008</td>
+              </tr>
+              <tr>
+                <td>154</td>
+                <td>Kraolandia</td>
+                <td>CR-ATO</td>
+                <td>0,06388893919</td>
+              </tr>
+              <tr>
+                <td>1493</td>
+                <td>Patauá</td>
+                <td>CR-MAO</td>
+                <td>0,0635566413</td>
+              </tr>
+              <tr>
+                <td>79</td>
+                <td>Capoto/Jarina</td>
+                <td>CR-NMT</td>
+                <td>0,0632350548</td>
+              </tr>
+              <tr>
+                <td>61</td>
+                <td>Vale do Guaporé</td>
+                <td>CR-CGB</td>
+                <td>0,063194377</td>
+              </tr>
+              <tr>
+                <td>331</td>
+                <td>Pimentel Barbosa</td>
+                <td>CR-RC</td>
+                <td>0,06214346882</td>
+              </tr>
+              <tr>
+                <td>203</td>
+                <td>Portal do Encantado</td>
+                <td>CR-CGB</td>
+                <td>0,06187025249</td>
+              </tr>
+              <tr>
+                <td>330</td>
+                <td>Barreirinha</td>
+                <td>CR-BTO</td>
+                <td>0,06143059796</td>
+              </tr>
+              <tr>
+                <td>241</td>
+                <td>Porquinhos dos Canela-Apãnjekra</td>
+                <td>CR-MA</td>
+                <td>0,06125580808</td>
+              </tr>
+              <tr>
+                <td>262</td>
+                <td>Raimundão</td>
+                <td>CR-RR</td>
+                <td>0,06075921072</td>
+              </tr>
+              <tr>
+                <td>414</td>
+                <td>Urucu/Juruá</td>
+                <td>CR-MA</td>
+                <td>0,0605751578</td>
+              </tr>
+              <tr>
+                <td>251</td>
+                <td>Manoki</td>
+                <td>CR-NOMT</td>
+                <td>0,05943733938</td>
+              </tr>
+              <tr>
+                <td>1404</td>
+                <td>Lago do Limão</td>
+                <td>CR-MAO</td>
+                <td>0,05798875734</td>
+              </tr>
+              <tr>
+                <td>376</td>
+                <td>Parque do Araguaia</td>
+                <td>CR-ATO</td>
+                <td>0,05762412323</td>
+              </tr>
+              <tr>
+                <td>1350</td>
+                <td>Jauary</td>
+                <td>CR-MAO</td>
+                <td>0,05753320075</td>
+              </tr>
+              <tr>
+                <td>1317</td>
+                <td>Igarapé Grande</td>
+                <td>CR-AS</td>
+                <td>0,0558927132</td>
+              </tr>
+              <tr>
+                <td>267</td>
+                <td>Krenrehé</td>
+                <td>CR-ATO</td>
+                <td>0,05556590539</td>
+              </tr>
+              <tr>
+                <td>1408</td>
+                <td>Lagoa dos Brincos</td>
+                <td>CR-CGB</td>
+                <td>0,05549989133</td>
+              </tr>
+              <tr>
+                <td>45</td>
+                <td>Bacurizinho</td>
+                <td>CR-MA</td>
+                <td>0,05543629889</td>
+              </tr>
+              <tr>
+                <td>81</td>
+                <td>São Marcos - MT</td>
+                <td>CR-XAV</td>
+                <td>0,05534746826</td>
+              </tr>
+              <tr>
+                <td>38</td>
+                <td>Arariboia</td>
+                <td>CR-MA</td>
+                <td>0,05504620661</td>
+              </tr>
+              <tr>
+                <td>485</td>
+                <td>Kapôt Nhinore</td>
+                <td>CR-NMT</td>
+                <td>0,05498950705</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Apinayé</td>
+                <td>CR-ATO</td>
+                <td>0,05435903552</td>
+              </tr>
+              <tr>
+                <td>24</td>
+                <td>Apurinã Km 124 BR-317</td>
+                <td>CR-Apur</td>
+                <td>0,05404737627</td>
+              </tr>
+              <tr>
+                <td>1426</td>
+                <td>Marajai</td>
+                <td>CR-AS</td>
+                <td>0,05381226584</td>
+              </tr>
+              <tr>
+                <td>1479</td>
+                <td>Paquiçamba</td>
+                <td>CR-CLPA</td>
+                <td>0,04896676335</td>
+              </tr>
+              <tr>
+                <td>1727</td>
+                <td>Igarapé Taboca do Alto Tarauacá</td>
+                <td>CR-JUR</td>
+                <td>0,04871415967</td>
+              </tr>
+              <tr>
+                <td>1595</td>
+                <td>Tapirapé/Karajá</td>
+                <td>CR-ATO</td>
+                <td>0,04859204995</td>
+              </tr>
+              <tr>
+                <td>162</td>
+                <td>Uty-Xunati</td>
+                <td>CR-CGB</td>
+                <td>0,04791972058</td>
+              </tr>
+              <tr>
+                <td>1624</td>
+                <td>Tikuna de Santo Antonio</td>
+                <td>CR-AS</td>
+                <td>0,0471811405</td>
+              </tr>
+              <tr>
+                <td>139</td>
+                <td>Zoró</td>
+                <td>CR-JPR</td>
+                <td>0,04635971858</td>
+              </tr>
+              <tr>
+                <td>450</td>
+                <td>Boca do Acre</td>
+                <td>CR-Apur</td>
+                <td>0,04619520309</td>
+              </tr>
+              <tr>
+                <td>386</td>
+                <td>Tadarimana</td>
+                <td>CR-CGB</td>
+                <td>0,04447309371</td>
+              </tr>
+              <tr>
+                <td>326</td>
+                <td>Pirineus de Souza</td>
+                <td>CR-CGB</td>
+                <td>0,04426360946</td>
+              </tr>
+              <tr>
+                <td>256</td>
+                <td>Moskow</td>
+                <td>CR-RR</td>
+                <td>0,044182967</td>
+              </tr>
+              <tr>
+                <td>1711</td>
+                <td>Utaria Wyhyna/Iròdu Iràna</td>
+                <td>CR-ATO</td>
+                <td>0,04359571092</td>
+              </tr>
+              <tr>
+                <td>471</td>
+                <td>Guajanaíra</td>
+                <td>CR-BTO</td>
+                <td>0,04342039032</td>
+              </tr>
+              <tr>
+                <td>1537</td>
+                <td>Recreio/São Félix</td>
+                <td>CR-MAO</td>
+                <td>0,04341935531</td>
+              </tr>
+              <tr>
+                <td>1521</td>
+                <td>Porquinhos</td>
+                <td>CR-MA</td>
+                <td>0,04044965618</td>
+              </tr>
+              <tr>
+                <td>462</td>
+                <td>São Francisco do Canimari</td>
+                <td>CR-AS</td>
+                <td>0,03976674887</td>
+              </tr>
+              <tr>
+                <td>432</td>
+                <td>Igarapé do Caucho</td>
+                <td>CR-JUR</td>
+                <td>0,0396511025</td>
+              </tr>
+              <tr>
+                <td>1712</td>
+                <td>Bragança-Marituba</td>
+                <td>CR-TPJ</td>
+                <td>0,03955636532</td>
+              </tr>
+              <tr>
+                <td>178</td>
+                <td>Bakairi</td>
+                <td>CR-CGB</td>
+                <td>0,03954997373</td>
+              </tr>
+              <tr>
+                <td>140</td>
+                <td>Sete de Setembro</td>
+                <td>CR-CAC</td>
+                <td>0,03913209709</td>
+              </tr>
+              <tr>
+                <td>406</td>
+                <td>Figueiras</td>
+                <td>CR-CGB</td>
+                <td>0,03905704714</td>
+              </tr>
+              <tr>
+                <td>1278</td>
+                <td>Estivadinho</td>
+                <td>CR-CGB</td>
+                <td>0,03799862743</td>
+              </tr>
+              <tr>
+                <td>503</td>
+                <td>Nukini</td>
+                <td>CR-JUR</td>
+                <td>0,03767978183</td>
+              </tr>
+              <tr>
+                <td>255</td>
+                <td>Manoa/Pium</td>
+                <td>CR-RR</td>
+                <td>0,03755705174</td>
+              </tr>
+              <tr>
+                <td>264</td>
+                <td>Malacacheta</td>
+                <td>CR-RR</td>
+                <td>0,03745638932</td>
+              </tr>
+              <tr>
+                <td>307</td>
+                <td>Paresi</td>
+                <td>CR-CGB</td>
+                <td>0,03743495691</td>
+              </tr>
+              <tr>
+                <td>366</td>
+                <td>São Domingos - MT</td>
+                <td>CR-ATO</td>
+                <td>0,03684596627</td>
+              </tr>
+              <tr>
+                <td>60</td>
+                <td>Igarapé Lage</td>
+                <td>CR-GJM</td>
+                <td>0,03614182152</td>
+              </tr>
+              <tr>
+                <td>438</td>
+                <td>Paraná do Arauató</td>
+                <td>CR-MAO</td>
+                <td>0,03547671399</td>
+              </tr>
+              <tr>
+                <td>1274</td>
+                <td>Erikpatsá</td>
+                <td>CR-NOMT</td>
+                <td>0,03470963497</td>
+              </tr>
+              <tr>
+                <td>266</td>
+                <td>Canauanim</td>
+                <td>CR-RR</td>
+                <td>0,03433844063</td>
+              </tr>
+              <tr>
+                <td>1446</td>
+                <td>Miguel/Josefa</td>
+                <td>CR-MAO</td>
+                <td>0,03421960065</td>
+              </tr>
+              <tr>
+                <td>1293</td>
+                <td>Gavião</td>
+                <td>CR-MAO</td>
+                <td>0,03413302823</td>
+              </tr>
+              <tr>
+                <td>1376</td>
+                <td>Katukina/Kaxinawá</td>
+                <td>CR-JUR</td>
+                <td>0,03372411239</td>
+              </tr>
+              <tr>
+                <td>368</td>
+                <td>Cacique Fontoura</td>
+                <td>CR-ATO</td>
+                <td>0,03292068654</td>
+              </tr>
+              <tr>
+                <td>179</td>
+                <td>Tenharim do Igarapé Preto</td>
+                <td>CR-MAD</td>
+                <td>0,03242817667</td>
+              </tr>
+              <tr>
+                <td>412</td>
+                <td>Krikati</td>
+                <td>CR-MA</td>
+                <td>0,03239640021</td>
+              </tr>
+              <tr>
+                <td>348</td>
+                <td>Maranduba</td>
+                <td>CR-ATO</td>
+                <td>0,03014953153</td>
+              </tr>
+              <tr>
+                <td>456</td>
+                <td>Rio Urubu</td>
+                <td>CR-MAO</td>
+                <td>0,02987434025</td>
+              </tr>
+              <tr>
+                <td>224</td>
+                <td>Umutina</td>
+                <td>CR-CGB</td>
+                <td>0,02962827585</td>
+              </tr>
+              <tr>
+                <td>1726</td>
+                <td>Piripkura ( restrição de uso )</td>
+                <td>CR-JPR</td>
+                <td>0,02960111152</td>
+              </tr>
+              <tr>
+                <td>1480</td>
+                <td>Paquiçamba</td>
+                <td>CR-CLPA</td>
+                <td>0,02920907796</td>
+              </tr>
+              <tr>
+                <td>1385</td>
+                <td>Kaxinawá Seringal Independência</td>
+                <td>CR-JUR</td>
+                <td>0,02917899123</td>
+              </tr>
+              <tr>
+                <td>228</td>
+                <td>Sucuba</td>
+                <td>CR-RR</td>
+                <td>0,02905041485</td>
+              </tr>
+              <tr>
+                <td>56</td>
+                <td>Roosevelt</td>
+                <td>CR-CAC</td>
+                <td>0,02884583683</td>
+              </tr>
+              <tr>
+                <td>87</td>
+                <td>Cobra Grande</td>
+                <td>CR-TPJ</td>
+                <td>0,02863413733</td>
+              </tr>
+              <tr>
+                <td>1471</td>
+                <td>Pacaas Novas</td>
+                <td>CR-GJM</td>
+                <td>0,02819820351</td>
+              </tr>
+              <tr>
+                <td>35</td>
+                <td>Aningal</td>
+                <td>CR-RR</td>
+                <td>0,02816192128</td>
+              </tr>
+              <tr>
+                <td>324</td>
+                <td>Rio Formoso</td>
+                <td>CR-CGB</td>
+                <td>0,02786964407</td>
+              </tr>
+              <tr>
+                <td>147</td>
+                <td>Kaxinawá Nova Olinda</td>
+                <td>CR-JUR</td>
+                <td>0,02782088689</td>
+              </tr>
+              <tr>
+                <td>165</td>
+                <td>Uirapuru</td>
+                <td>CR-CGB</td>
+                <td>0,02699567574</td>
+              </tr>
+              <tr>
+                <td>1625</td>
+                <td>Tukuna Porto Espiritual</td>
+                <td>CR-AS</td>
+                <td>0,02677575816</td>
+              </tr>
+              <tr>
+                <td>245</td>
+                <td>Serra da Moça</td>
+                <td>CR-RR</td>
+                <td>0,02669178876</td>
+              </tr>
+              <tr>
+                <td>1279</td>
+                <td>Estrela da Paz</td>
+                <td>CR-AS</td>
+                <td>0,02610238036</td>
+              </tr>
+              <tr>
+                <td>425</td>
+                <td>Tukuna Umariaçu</td>
+                <td>CR-AS</td>
+                <td>0,02590281606</td>
+              </tr>
+              <tr>
+                <td>1714</td>
+                <td>Tuwa Apekuokawera</td>
+                <td>CR-BTO</td>
+                <td>0,02543855145</td>
+              </tr>
+              <tr>
+                <td>64</td>
+                <td>Andirá-Marau</td>
+                <td>CR-MAO</td>
+                <td>0,02539045291</td>
+              </tr>
+              <tr>
+                <td>63</td>
+                <td>Arara do Rio Amônia</td>
+                <td>CR-JUR</td>
+                <td>0,02514604862</td>
+              </tr>
+              <tr>
+                <td>333</td>
+                <td>Cajuhiri Atravessado</td>
+                <td>CR-MAO</td>
+                <td>0,02508140276</td>
+              </tr>
+              <tr>
+                <td>398</td>
+                <td>Tabalascada</td>
+                <td>CR-RR</td>
+                <td>0,02461425467</td>
+              </tr>
+              <tr>
+                <td>48</td>
+                <td>Badjonkore</td>
+                <td>CR-KSPA</td>
+                <td>0,02455730267</td>
+              </tr>
+              <tr>
+                <td>308</td>
+                <td>Yanomami</td>
+                <td>CR-RR</td>
+                <td>0,02358817591</td>
+              </tr>
+              <tr>
+                <td>449</td>
+                <td>Kaxarari</td>
+                <td>CR-Apur</td>
+                <td>0,02331902052</td>
+              </tr>
+              <tr>
+                <td>198</td>
+                <td>Taego Ãwa</td>
+                <td>CR-ATO</td>
+                <td>0,0231396848</td>
+              </tr>
+              <tr>
+                <td>474</td>
+                <td>Paukalirajausu</td>
+                <td>CR-CGB</td>
+                <td>0,02293423485</td>
+              </tr>
+              <tr>
+                <td>378</td>
+                <td>Xikrin do Rio Catete</td>
+                <td>CR-BTO</td>
+                <td>0,02239088081</td>
+              </tr>
+              <tr>
+                <td>188</td>
+                <td>São Marcos - RR</td>
+                <td>CR-RR</td>
+                <td>0,02224952594</td>
+              </tr>
+              <tr>
+                <td>133</td>
+                <td>Wedezé</td>
+                <td>CR-XAV</td>
+                <td>0,02183599702</td>
+              </tr>
+              <tr>
+                <td>29</td>
+                <td>Arara do Rio Branco</td>
+                <td>CR-NOMT</td>
+                <td>0,02114204067</td>
+              </tr>
+              <tr>
+                <td>265</td>
+                <td>Ouro</td>
+                <td>CR-RR</td>
+                <td>0,02111265655</td>
+              </tr>
+              <tr>
+                <td>1631</td>
+                <td>Uaçá</td>
+                <td>CR-ANP</td>
+                <td>0,02107354512</td>
+              </tr>
+              <tr>
+                <td>1628</td>
+                <td>Tupã-Supé</td>
+                <td>CR-AS</td>
+                <td>0,02103825278</td>
+              </tr>
+              <tr>
+                <td>105</td>
+                <td>Pirititi</td>
+                <td>CR-RR</td>
+                <td>0,02079379956</td>
+              </tr>
+              <tr>
+                <td>280</td>
+                <td>Campinas/Katukina</td>
+                <td>CR-JUR</td>
+                <td>0,02046925847</td>
+              </tr>
+              <tr>
+                <td>1683</td>
+                <td>Vista Alegre</td>
+                <td>CR-MAO</td>
+                <td>0,02033492989</td>
+              </tr>
+              <tr>
+                <td>1542</td>
+                <td>Rio Branco</td>
+                <td>CR-JPR</td>
+                <td>0,01950011291</td>
+              </tr>
+              <tr>
+                <td>298</td>
+                <td>Trincheira Bacaja</td>
+                <td>CR-CLPA</td>
+                <td>0,01917564921</td>
+              </tr>
+              <tr>
+                <td>59</td>
+                <td>Igarapé Ribeirão</td>
+                <td>CR-GJM</td>
+                <td>0,01897412751</td>
+              </tr>
+              <tr>
+                <td>194</td>
+                <td>Jabuti</td>
+                <td>CR-RR</td>
+                <td>0,01889621048</td>
+              </tr>
+              <tr>
+                <td>128</td>
+                <td>Igarapé Lourdes</td>
+                <td>CR-JPR</td>
+                <td>0,01888623652</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Apipica</td>
+                <td>CR-MAO</td>
+                <td>0,01873343212</td>
+              </tr>
+              <tr>
+                <td>166</td>
+                <td>Juininha</td>
+                <td>CR-CGB</td>
+                <td>0,01858194682</td>
+              </tr>
+              <tr>
+                <td>44</td>
+                <td>Awa</td>
+                <td>CR-MA</td>
+                <td>0,01793916333</td>
+              </tr>
+              <tr>
+                <td>19</td>
+                <td>Alto Turiaçu</td>
+                <td>CR-MA</td>
+                <td>0,01777042373</td>
+              </tr>
+              <tr>
+                <td>33</td>
+                <td>Anaro</td>
+                <td>CR-RR</td>
+                <td>0,0175156529</td>
+              </tr>
+              <tr>
+                <td>257</td>
+                <td>Barata Livramento</td>
+                <td>CR-RR</td>
+                <td>0,01734073963</td>
+              </tr>
+              <tr>
+                <td>468</td>
+                <td>Kaxinawá da Praia do Carapanã</td>
+                <td>CR-JUR</td>
+                <td>0,0172790627</td>
+              </tr>
+              <tr>
+                <td>1383</td>
+                <td>Kaxinawá do Rio Jordão</td>
+                <td>CR-JUR</td>
+                <td>0,01694799605</td>
+              </tr>
+              <tr>
+                <td>1508</td>
+                <td>Pinatuba</td>
+                <td>CR-MAO</td>
+                <td>0,01682851144</td>
+              </tr>
+              <tr>
+                <td>259</td>
+                <td>Boqueirão</td>
+                <td>CR-RR</td>
+                <td>0,01678443942</td>
+              </tr>
+              <tr>
+                <td>260</td>
+                <td>Truaru</td>
+                <td>CR-RR</td>
+                <td>0,01676175202</td>
+              </tr>
+              <tr>
+                <td>1400</td>
+                <td>Kwazá do Rio São Pedro</td>
+                <td>CR-CAC</td>
+                <td>0,01629168953</td>
+              </tr>
+              <tr>
+                <td>1536</td>
+                <td>Raposa Serra do Sol</td>
+                <td>CR-RR</td>
+                <td>0,01628378634</td>
+              </tr>
+              <tr>
+                <td>36</td>
+                <td>Anta</td>
+                <td>CR-RR</td>
+                <td>0,01623327609</td>
+              </tr>
+              <tr>
+                <td>189</td>
+                <td>Parque do Aripuanã</td>
+                <td>CR-CAC</td>
+                <td>0,01603223792</td>
+              </tr>
+              <tr>
+                <td>1551</td>
+                <td>Rio Guaporé</td>
+                <td>CR-GJM</td>
+                <td>0,01539986595</td>
+              </tr>
+              <tr>
+                <td>167</td>
+                <td>Utiariti</td>
+                <td>CR-CGB</td>
+                <td>0,0151494497</td>
+              </tr>
+              <tr>
+                <td>261</td>
+                <td>Bom Jesus</td>
+                <td>CR-RR</td>
+                <td>0,01502752172</td>
+              </tr>
+              <tr>
+                <td>1591</td>
+                <td>Tabocal</td>
+                <td>CR-MAO</td>
+                <td>0,01487518312</td>
+              </tr>
+              <tr>
+                <td>32</td>
+                <td>Ananás</td>
+                <td>CR-RR</td>
+                <td>0,01468855054</td>
+              </tr>
+              <tr>
+                <td>478</td>
+                <td>Karajá de Aruanã II</td>
+                <td>CR-ATO</td>
+                <td>0,01457949985</td>
+              </tr>
+              <tr>
+                <td>1429</td>
+                <td>Lago do Marinheiro</td>
+                <td>CR-MAO</td>
+                <td>0,01453795435</td>
+              </tr>
+              <tr>
+                <td>1676</td>
+                <td>Guanabara</td>
+                <td>CR-AS</td>
+                <td>0,01439354001</td>
+              </tr>
+              <tr>
+                <td>31</td>
+                <td>Arara da Volta Grande do Xingu</td>
+                <td>CR-CLPA</td>
+                <td>0,01432558587</td>
+              </tr>
+              <tr>
+                <td>70</td>
+                <td>Aripuanã</td>
+                <td>CR-NOMT</td>
+                <td>0,01411662749</td>
+              </tr>
+              <tr>
+                <td>1432</td>
+                <td>Massaco</td>
+                <td>CR-JPR</td>
+                <td>0,01390388464</td>
+              </tr>
+              <tr>
+                <td>361</td>
+                <td>Barro Alto</td>
+                <td>CR-AS</td>
+                <td>0,01370286564</td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td>Arara</td>
+                <td>CR-CLPA</td>
+                <td>0,0133090139</td>
+              </tr>
+              <tr>
+                <td>453</td>
+                <td>Jaminawa do Igarapé Preto</td>
+                <td>CR-JUR</td>
+                <td>0,01330356658</td>
+              </tr>
+              <tr>
+                <td>504</td>
+                <td>Poyanawa</td>
+                <td>CR-JUR</td>
+                <td>0,01322288695</td>
+              </tr>
+              <tr>
+                <td>1292</td>
+                <td>Galibi</td>
+                <td>CR-ANP</td>
+                <td>0,01317927531</td>
+              </tr>
+              <tr>
+                <td>1569</td>
+                <td>Santana</td>
+                <td>CR-CGB</td>
+                <td>0,01295866029</td>
+              </tr>
+              <tr>
+                <td>1244</td>
+                <td>Cajueiro</td>
+                <td>CR-RR</td>
+                <td>0,01266525032</td>
+              </tr>
+              <tr>
+                <td>371</td>
+                <td>Sepoti</td>
+                <td>CR-MAD</td>
+                <td>0,01260786901</td>
+              </tr>
+              <tr>
+                <td>263</td>
+                <td>Pium</td>
+                <td>CR-RR</td>
+                <td>0,01230539538</td>
+              </tr>
+              <tr>
+                <td>465</td>
+                <td>Panará</td>
+                <td>CR-NMT</td>
+                <td>0,01217969613</td>
+              </tr>
+              <tr>
+                <td>30</td>
+                <td>Arara do Igarapé Humaitá</td>
+                <td>CR-JUR</td>
+                <td>0,01203842299</td>
+              </tr>
+              <tr>
+                <td>1411</td>
+                <td>Lauro Sodré</td>
+                <td>CR-AS</td>
+                <td>0,01194440722</td>
+              </tr>
+              <tr>
+                <td>1555</td>
+                <td>Rio Negro Ocaia</td>
+                <td>CR-GJM</td>
+                <td>0,01190177173</td>
+              </tr>
+              <tr>
+                <td>1501</td>
+                <td>Peneri/Tacaquiri</td>
+                <td>CR-Mpur</td>
+                <td>0,01161795143</td>
+              </tr>
+              <tr>
+                <td>253</td>
+                <td>Tenharim Marmelos</td>
+                <td>CR-MAD</td>
+                <td>0,01157820157</td>
+              </tr>
+              <tr>
+                <td>90</td>
+                <td>Nambikwara</td>
+                <td>CR-CGB</td>
+                <td>0,01146524804</td>
+              </tr>
+              <tr>
+                <td>345</td>
+                <td>Kulina Igarapé do Pau</td>
+                <td>CR-JUR</td>
+                <td>0,01142552519</td>
+              </tr>
+              <tr>
+                <td>92</td>
+                <td>Rio Pindaré</td>
+                <td>CR-MA</td>
+                <td>0,01136054302</td>
+              </tr>
+              <tr>
+                <td>26</td>
+                <td>Araçá</td>
+                <td>CR-RR</td>
+                <td>0,01131114454</td>
+              </tr>
+              <tr>
+                <td>181</td>
+                <td>Kampa do Igarapé Primavera</td>
+                <td>CR-JUR</td>
+                <td>0,01122923718</td>
+              </tr>
+              <tr>
+                <td>1294</td>
+                <td>Geralda Toco Preto</td>
+                <td>CR-MA</td>
+                <td>0,0111541529</td>
+              </tr>
+              <tr>
+                <td>369</td>
+                <td>Tenharim Marmelos (Gleba B)</td>
+                <td>CR-MAD</td>
+                <td>0,01109388843</td>
+              </tr>
+              <tr>
+                <td>168</td>
+                <td>Tirecatinga</td>
+                <td>CR-CGB</td>
+                <td>0,01101811909</td>
+              </tr>
+              <tr>
+                <td>1632</td>
+                <td>Uati-Paraná</td>
+                <td>CR-AS</td>
+                <td>0,01090178758</td>
+              </tr>
+              <tr>
+                <td>1220</td>
+                <td>Baú</td>
+                <td>CR-CGB</td>
+                <td>0,01089000535</td>
+              </tr>
+              <tr>
+                <td>1553</td>
+                <td>Rio Manicoré</td>
+                <td>CR-MAO</td>
+                <td>0,01082016527</td>
+              </tr>
+              <tr>
+                <td>1288</td>
+                <td>Fortaleza do Castanho</td>
+                <td>CR-MAO</td>
+                <td>0,01061332637</td>
+              </tr>
+              <tr>
+                <td>300</td>
+                <td>Bom Intento</td>
+                <td>CR-AS</td>
+                <td>0,01053444265</td>
+              </tr>
+              <tr>
+                <td>309</td>
+                <td>Maró</td>
+                <td>CR-TPJ</td>
+                <td>0,01051903867</td>
+              </tr>
+              <tr>
+                <td>473</td>
+                <td>Sawré Bap in (Apompu)</td>
+                <td>CR-TPJ</td>
+                <td>0,01038830299</td>
+              </tr>
+              <tr>
+                <td>254</td>
+                <td>Santa Inez</td>
+                <td>CR-RR</td>
+                <td>0,01027201149</td>
+              </tr>
+              <tr>
+                <td>335</td>
+                <td>Espírito Santo</td>
+                <td>CR-AS</td>
+                <td>0,01014846665</td>
+              </tr>
+              <tr>
+                <td>377</td>
+                <td>Sororó</td>
+                <td>CR-BTO</td>
+                <td>0,0100952349</td>
+              </tr>
+              <tr>
+                <td>281</td>
+                <td>Kayabi</td>
+                <td>CR-NMT</td>
+                <td>0,01000289558</td>
+              </tr>
+              <tr>
+                <td>182</td>
+                <td>Jaminawa Arara do Rio Bagé</td>
+                <td>CR-JUR</td>
+                <td>0,009878627637</td>
+              </tr>
+              <tr>
+                <td>190</td>
+                <td>Enawenê-Nawê</td>
+                <td>CR-NOMT</td>
+                <td>0,009821839145</td>
+              </tr>
+              <tr>
+                <td>1349</td>
+                <td>Jatuarana</td>
+                <td>CR-MAO</td>
+                <td>0,009651376462</td>
+              </tr>
+              <tr>
+                <td>174</td>
+                <td>Rio Gregório</td>
+                <td>CR-JUR</td>
+                <td>0,009342213966</td>
+              </tr>
+              <tr>
+                <td>1378</td>
+                <td>Kaxinawá Ashaninka do Rio Breu</td>
+                <td>CR-JUR</td>
+                <td>0,009197804164</td>
+              </tr>
+              <tr>
+                <td>230</td>
+                <td>Mãe Maria</td>
+                <td>CR-BTO</td>
+                <td>0,009159383621</td>
+              </tr>
+              <tr>
+                <td>1415</td>
+                <td>Macarrão</td>
+                <td>CR-AS</td>
+                <td>0,009136322679</td>
+              </tr>
+              <tr>
+                <td>1233</td>
+                <td>Cabeceira do Rio Acre</td>
+                <td>CR-Apur</td>
+                <td>0,009130769216</td>
+              </tr>
+              <tr>
+                <td>353</td>
+                <td>Paumari do Rio Ituxi</td>
+                <td>CR-Mpur</td>
+                <td>0,009104464961</td>
+              </tr>
+              <tr>
+                <td>502</td>
+                <td>Évare I</td>
+                <td>CR-AS</td>
+                <td>0,009066824798</td>
+              </tr>
+              <tr>
+                <td>1556</td>
+                <td>Rio Negro Ocaia</td>
+                <td>CR-GJM</td>
+                <td>0,009066608459</td>
+              </tr>
+              <tr>
+                <td>399</td>
+                <td>Taihantesu</td>
+                <td>CR-CGB</td>
+                <td>0,009012407025</td>
+              </tr>
+              <tr>
+                <td>352</td>
+                <td>Parque do Tumucumaque</td>
+                <td>CR-ANP</td>
+                <td>0,008922660279</td>
+              </tr>
+              <tr>
+                <td>1418</td>
+                <td>Mamoadate</td>
+                <td>CR-Apur</td>
+                <td>0,00879300669</td>
+              </tr>
+              <tr>
+                <td>442</td>
+                <td>Rio Jumas</td>
+                <td>CR-MAO</td>
+                <td>0,008626840348</td>
+              </tr>
+              <tr>
+                <td>67</td>
+                <td>Arary</td>
+                <td>CR-MAO</td>
+                <td>0,008537775337</td>
+              </tr>
+              <tr>
+                <td>98</td>
+                <td>Uru-Eu-Wau-Wau</td>
+                <td>CR-JPR</td>
+                <td>0,008429867723</td>
+              </tr>
+              <tr>
+                <td>1403</td>
+                <td>Lago do Beruri</td>
+                <td>CR-MAO</td>
+                <td>0,008151473209</td>
+              </tr>
+              <tr>
+                <td>1512</td>
+                <td>Pirahã</td>
+                <td>CR-MAD</td>
+                <td>0,008146941578</td>
+              </tr>
+              <tr>
+                <td>249</td>
+                <td>Camicua</td>
+                <td>CR-Apur</td>
+                <td>0,008125892123</td>
+              </tr>
+              <tr>
+                <td>373</td>
+                <td>Tikúna de Feijoal</td>
+                <td>CR-AS</td>
+                <td>0,008046024825</td>
+              </tr>
+              <tr>
+                <td>16</td>
+                <td>Alto Rio Purus</td>
+                <td>CR-Apur</td>
+                <td>0,008045062457</td>
+              </tr>
+              <tr>
+                <td>1268</td>
+                <td>Cunhã-Sapucaia</td>
+                <td>CR-MAO</td>
+                <td>0,007819429882</td>
+              </tr>
+              <tr>
+                <td>343</td>
+                <td>Kaxinawá do Rio Humaitá</td>
+                <td>CR-JUR</td>
+                <td>0,007793609187</td>
+              </tr>
+              <tr>
+                <td>1695</td>
+                <td>São Domingos do Jacapari e Estação</td>
+                <td>CR-AS</td>
+                <td>0,00758594834</td>
+              </tr>
+              <tr>
+                <td>1497</td>
+                <td>Paumari do Lago Manissuã</td>
+                <td>CR-Mpur</td>
+                <td>0,007540152348</td>
+              </tr>
+              <tr>
+                <td>1405</td>
+                <td>Lago Jauari</td>
+                <td>CR-MAO</td>
+                <td>0,007493658899</td>
+              </tr>
+              <tr>
+                <td>1693</td>
+                <td>Munduruku-Taquara</td>
+                <td>CR-TPJ</td>
+                <td>0,007401540417</td>
+              </tr>
+              <tr>
+                <td>1335</td>
+                <td>Jacamim</td>
+                <td>CR-RR</td>
+                <td>0,007394464532</td>
+              </tr>
+              <tr>
+                <td>362</td>
+                <td>Lago do Correio</td>
+                <td>CR-AS</td>
+                <td>0,007355458192</td>
+              </tr>
+              <tr>
+                <td>150</td>
+                <td>Rio Mequens</td>
+                <td>CR-CAC</td>
+                <td>0,007229477905</td>
+              </tr>
+              <tr>
+                <td>1327</td>
+                <td>Ipixuna</td>
+                <td>CR-MAD</td>
+                <td>0,007060654772</td>
+              </tr>
+              <tr>
+                <td>1498</td>
+                <td>Paumari do Lago Marahã</td>
+                <td>CR-Mpur</td>
+                <td>0,00701716087</td>
+              </tr>
+              <tr>
+                <td>1681</td>
+                <td>Sururuá</td>
+                <td>CR-AS</td>
+                <td>0,007010832647</td>
+              </tr>
+              <tr>
+                <td>1339</td>
+                <td>Jaminaua/Envira</td>
+                <td>CR-JUR</td>
+                <td>0,00697614918</td>
+              </tr>
+              <tr>
+                <td>332</td>
+                <td>Betania</td>
+                <td>CR-AS</td>
+                <td>0,006970082745</td>
+              </tr>
+              <tr>
+                <td>1375</td>
+                <td>Karitiana</td>
+                <td>CR-JPR</td>
+                <td>0,006919672276</td>
+              </tr>
+              <tr>
+                <td>58</td>
+                <td>Serra Morena</td>
+                <td>CR-NOMT</td>
+                <td>0,006881347159</td>
+              </tr>
+              <tr>
+                <td>1234</td>
+                <td>Cacau do Tarauaca</td>
+                <td>CR-VJ</td>
+                <td>0,006659864978</td>
+              </tr>
+              <tr>
+                <td>1281</td>
+                <td>Évare II</td>
+                <td>CR-AS</td>
+                <td>0,006629388783</td>
+              </tr>
+              <tr>
+                <td>246</td>
+                <td>Ponta da Serra</td>
+                <td>CR-RR</td>
+                <td>0,006533997417</td>
+              </tr>
+              <tr>
+                <td>355</td>
+                <td>São Sebastião</td>
+                <td>CR-AS</td>
+                <td>0,006487906642</td>
+              </tr>
+              <tr>
+                <td>1267</td>
+                <td>Cuiu-Cuiu</td>
+                <td>CR-AS</td>
+                <td>0,00641948287</td>
+              </tr>
+              <tr>
+                <td>1649</td>
+                <td>Vui-Uata-In</td>
+                <td>CR-AS</td>
+                <td>0,006278625253</td>
+              </tr>
+              <tr>
+                <td>1354</td>
+                <td>Jumina</td>
+                <td>CR-ANP</td>
+                <td>0,006210525444</td>
+              </tr>
+              <tr>
+                <td>470</td>
+                <td>Fazenda Mabel (Gavião/Akrãtikatêjê)</td>
+                <td>CR-BTO</td>
+                <td>0,006102995489</td>
+              </tr>
+              <tr>
+                <td>1436</td>
+                <td>Mawetek</td>
+                <td>CR-VJ</td>
+                <td>0,006046376088</td>
+              </tr>
+              <tr>
+                <td>1359</td>
+                <td>Kampa do Rio Amônia</td>
+                <td>CR-JUR</td>
+                <td>0,006038013981</td>
+              </tr>
+              <tr>
+                <td>1262</td>
+                <td>Coata-Laranjal</td>
+                <td>CR-MAO</td>
+                <td>0,005837194325</td>
+              </tr>
+              <tr>
+                <td>223</td>
+                <td>Caititu</td>
+                <td>CR-Mpur</td>
+                <td>0,005829674249</td>
+              </tr>
+              <tr>
+                <td>1667</td>
+                <td>Zuruahã</td>
+                <td>CR-Mpur</td>
+                <td>0,005807051491</td>
+              </tr>
+              <tr>
+                <td>427</td>
+                <td>Waiãpi</td>
+                <td>CR-ANP</td>
+                <td>0,005601609229</td>
+              </tr>
+              <tr>
+                <td>1466</td>
+                <td>Nove de Janeiro</td>
+                <td>CR-MAD</td>
+                <td>0,005408682791</td>
+              </tr>
+              <tr>
+                <td>252</td>
+                <td>Japuira</td>
+                <td>CR-NOMT</td>
+                <td>0,005366947641</td>
+              </tr>
+              <tr>
+                <td>431</td>
+                <td>Caru</td>
+                <td>CR-MA</td>
+                <td>0,005336862179</td>
+              </tr>
+              <tr>
+                <td>1572</td>
+                <td>São Leopoldo</td>
+                <td>CR-AS</td>
+                <td>0,00532361896</td>
+              </tr>
+              <tr>
+                <td>1459</td>
+                <td>Nhamundá/Mapuera</td>
+                <td>CR-MAO</td>
+                <td>0,005316346562</td>
+              </tr>
+              <tr>
+                <td>306</td>
+                <td>Irantxe</td>
+                <td>CR-NOMT</td>
+                <td>0,005295953981</td>
+              </tr>
+              <tr>
+                <td>408</td>
+                <td>Trocará</td>
+                <td>CR-BTO</td>
+                <td>0,005264534698</td>
+              </tr>
+              <tr>
+                <td>340</td>
+                <td>Kanamari do Rio Juruá</td>
+                <td>CR-VJ</td>
+                <td>0,005214694752</td>
+              </tr>
+              <tr>
+                <td>124</td>
+                <td>Araweté Igarapé Ipixuna</td>
+                <td>CR-CLPA</td>
+                <td>0,005194847515</td>
+              </tr>
+              <tr>
+                <td>1259</td>
+                <td>Catipari/Mamoria</td>
+                <td>CR-Mpur</td>
+                <td>0,005186089406</td>
+              </tr>
+              <tr>
+                <td>196</td>
+                <td>Parakanã</td>
+                <td>CR-BTO</td>
+                <td>0,005157336989</td>
+              </tr>
+              <tr>
+                <td>356</td>
+                <td>Seruini/Mariene</td>
+                <td>CR-Mpur</td>
+                <td>0,005124260416</td>
+              </tr>
+              <tr>
+                <td>62</td>
+                <td>Água Preta/Inari</td>
+                <td>CR-Mpur</td>
+                <td>0,00507392247</td>
+              </tr>
+              <tr>
+                <td>20</td>
+                <td>Apurinã do Igarapé São João</td>
+                <td>CR-Mpur</td>
+                <td>0,005048372131</td>
+              </tr>
+              <tr>
+                <td>1496</td>
+                <td>Paumari do Cuniua</td>
+                <td>CR-Mpur</td>
+                <td>0,00499434321</td>
+              </tr>
+              <tr>
+                <td>364</td>
+                <td>Santa Cruz da Nova Aliança</td>
+                <td>CR-AS</td>
+                <td>0,004992722821</td>
+              </tr>
+              <tr>
+                <td>1269</td>
+                <td>Deni</td>
+                <td>CR-Mpur</td>
+                <td>0,004942439832</td>
+              </tr>
+              <tr>
+                <td>1401</td>
+                <td>Lago Aiapua</td>
+                <td>CR-MAO</td>
+                <td>0,004851246376</td>
+              </tr>
+              <tr>
+                <td>1347</td>
+                <td>Jarawara/Jamamadi/Kanamati</td>
+                <td>CR-Mpur</td>
+                <td>0,004830655741</td>
+              </tr>
+              <tr>
+                <td>192</td>
+                <td>Torá</td>
+                <td>CR-MAD</td>
+                <td>0,004782569943</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Apiaká do Pontal e Isolados</td>
+                <td>CR-NMT</td>
+                <td>0,004774465342</td>
+              </tr>
+              <tr>
+                <td>379</td>
+                <td>Menkü</td>
+                <td>CR-NOMT</td>
+                <td>0,004706101949</td>
+              </tr>
+              <tr>
+                <td>351</td>
+                <td>Menkragnoti</td>
+                <td>CR-CGB</td>
+                <td>0,004705326172</td>
+              </tr>
+              <tr>
+                <td>360</td>
+                <td>Xipaya</td>
+                <td>CR-CLPA</td>
+                <td>0,004656025209</td>
+              </tr>
+              <tr>
+                <td>344</td>
+                <td>Kulina do Medio Jurua</td>
+                <td>CR-VJ</td>
+                <td>0,004652749888</td>
+              </tr>
+              <tr>
+                <td>387</td>
+                <td>Rio Omerê</td>
+                <td>CR-JPR</td>
+                <td>0,004616027026</td>
+              </tr>
+              <tr>
+                <td>84</td>
+                <td>Riozinho</td>
+                <td>CR-AS</td>
+                <td>0,004613736936</td>
+              </tr>
+              <tr>
+                <td>1270</td>
+                <td>Diahui</td>
+                <td>CR-MAD</td>
+                <td>0,004585538858</td>
+              </tr>
+              <tr>
+                <td>1399</td>
+                <td>Kumaru do Lago Ualá</td>
+                <td>CR-AS</td>
+                <td>0,004524297772</td>
+              </tr>
+              <tr>
+                <td>375</td>
+                <td>Kulina do Rio Envira</td>
+                <td>CR-JUR</td>
+                <td>0,004499334894</td>
+              </tr>
+              <tr>
+                <td>125</td>
+                <td>Koatinemo</td>
+                <td>CR-CLPA</td>
+                <td>0,004492641917</td>
+              </tr>
+              <tr>
+                <td>1723</td>
+                <td>Jacareúba/Katauixi (restrição uso)</td>
+                <td>CR-Mpur</td>
+                <td>0,004461633575</td>
+              </tr>
+              <tr>
+                <td>199</td>
+                <td>Juruna do Km 17</td>
+                <td>CR-CLPA</td>
+                <td>0,004453574275</td>
+              </tr>
+              <tr>
+                <td>359</td>
+                <td>WaiWái</td>
+                <td>CR-RR</td>
+                <td>0,004430719474</td>
+              </tr>
+              <tr>
+                <td>357</td>
+                <td>Setemã</td>
+                <td>CR-MAO</td>
+                <td>0,00431728928</td>
+              </tr>
+              <tr>
+                <td>440</td>
+                <td>Cué Cué/ Marabitanas</td>
+                <td>CR-RNG</td>
+                <td>0,004283896735</td>
+              </tr>
+              <tr>
+                <td>17</td>
+                <td>Alto Sepatini</td>
+                <td>CR-Mpur</td>
+                <td>0,004224058216</td>
+              </tr>
+              <tr>
+                <td>1360</td>
+                <td>Kampa e Isolados do Rio Envira</td>
+                <td>CR-JUR</td>
+                <td>0,00421345958</td>
+              </tr>
+              <tr>
+                <td>338</td>
+                <td>Inauini/Teuini</td>
+                <td>CR-Mpur</td>
+                <td>0,004197930622</td>
+              </tr>
+              <tr>
+                <td>Riozinho do Alto Envira</td>
+                <td>CR-JUR</td>
+                <td>0,004193755494</td>
+              </tr>
+              <tr>
+                <td>108</td>
+                <td>Maraã Urubaxi</td>
+                <td>CR-RNG</td>
+                <td>0,004180739554</td>
+              </tr>
+              <tr>
+                <td>350</td>
+                <td>Médio Rio Negro I</td>
+                <td>CR-RNG</td>
+                <td>0,004133400384</td>
+              </tr>
+              <tr>
+                <td>451</td>
+                <td>Igarapé Capana</td>
+                <td>CR-Apur</td>
+                <td>0,004117255426</td>
+              </tr>
+              <tr>
+                <td>1539</td>
+                <td>Rio Apaporis</td>
+                <td>CR-AS</td>
+                <td>0,004106476392</td>
+              </tr>
+              <tr>
+                <td>89</td>
+                <td>Kaxuyana-Tunayana</td>
+                <td>CR-MAO</td>
+                <td>0,004091271396</td>
+              </tr>
+              <tr>
+                <td>23</td>
+                <td>Apurinã Igarapé Tauamirim</td>
+                <td>CR-Mpur</td>
+                <td>0,004063702047</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Acimã</td>
+                <td>CR-Mpur</td>
+                <td>0,004053787267</td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td>Alto Rio Negro</td>
+                <td>CR-RNG</td>
+                <td>0,004049563009</td>
+              </tr>
+              <tr>
+                <td>1651</td>
+                <td>Waimiri-Atroari</td>
+                <td>CR-MAO</td>
+                <td>0,003964004642</td>
+              </tr>
+              <tr>
+                <td>1499</td>
+                <td>Paumari do Lago Paricá</td>
+                <td>CR-Mpur</td>
+                <td>0,00394333399</td>
+              </tr>
+              <tr>
+                <td>302</td>
+                <td>Escondido</td>
+                <td>CR-NOMT</td>
+                <td>0,0039393778</td>
+              </tr>
+              <tr>
+                <td>1541</td>
+                <td>Rio Biá</td>
+                <td>CR-AS</td>
+                <td>0,003930934158</td>
+              </tr>
+              <tr>
+                <td>242</td>
+                <td>Kawahiva do Rio Pardo</td>
+                <td>CR-JPR</td>
+                <td>0,003915705097</td>
+              </tr>
+              <tr>
+                <td>1520</td>
+                <td>Ponte de Pedra</td>
+                <td>CR-CGB</td>
+                <td>0,003898024162</td>
+              </tr>
+              <tr>
+                <td>284</td>
+                <td>Médio Rio Negro II</td>
+                <td>CR-RNG</td>
+                <td>0,0038762748</td>
+              </tr>
+              <tr>
+                <td>1464</td>
+                <td>Nova Esperança do Rio Jandiatuba</td>
+                <td>CR-AS</td>
+                <td>0,003858108652</td>
+              </tr>
+              <tr>
+                <td>1211</td>
+                <td>Balaio</td>
+                <td>CR-RNG</td>
+                <td>0,003811046861</td>
+              </tr>
+              <tr>
+                <td>358</td>
+                <td>Tumiã</td>
+                <td>CR-Mpur</td>
+                <td>0,003785963143</td>
+              </tr>
+              <tr>
+                <td>106</td>
+                <td>Rio Téa</td>
+                <td>CR-RNG</td>
+                <td>0,003783532921</td>
+              </tr>
+              <tr>
+                <td>1544</td>
+                <td>Kuruáya</td>
+                <td>CR-CLPA</td>
+                <td>0,003760983661</td>
+              </tr>
+              <tr>
+                <td>100</td>
+                <td>Sawré Muybu (Pimental)</td>
+                <td>CR-TPJ</td>
+                <td>0,003671490687</td>
+              </tr>
+              <tr>
+                <td>109</td>
+                <td>Parana do Boa Boa</td>
+                <td>CR-RNG</td>
+                <td>0,003664020068</td>
+              </tr>
+              <tr>
+                <td>1643</td>
+                <td>Vale do Javari</td>
+                <td>CR-VJ</td>
+                <td>0,003619081915</td>
+              </tr>
+              <tr>
+                <td>1353</td>
+                <td>Juma</td>
+                <td>CR-MAD</td>
+                <td>0,003611143516</td>
+              </tr>
+              <tr>
+                <td>1246</td>
+                <td>Camadeni</td>
+                <td>CR-Mpur</td>
+                <td>0,003572403842</td>
+              </tr>
+              <tr>
+                <td>1619</td>
+                <td>Trombetas/Mapuera</td>
+                <td>CR-MAO</td>
+                <td>0,003562787268</td>
+              </tr>
+              <tr>
+                <td>354</td>
+                <td>Rio Paru DEste</td>
+                <td>CR-ANP</td>
+                <td>0,003542802388</td>
+              </tr>
+              <tr>
+                <td>1607</td>
+                <td>Itixi Mitari</td>
+                <td>CR-MAO</td>
+                <td>0,003529299942</td>
+              </tr>
+              <tr>
+                <td>1212</td>
+                <td>Banawá</td>
+                <td>CR-Mpur</td>
+                <td>0,003514722135</td>
+              </tr>
+              <tr>
+                <td>118</td>
+                <td>Jurubaxi-téa</td>
+                <td>CR-RNG</td>
+                <td>0,003492229558</td>
+              </tr>
+              <tr>
+                <td>1473</td>
+                <td>Padre</td>
+                <td>CR-MAO</td>
+                <td>0,003483001248</td>
+              </tr>
+              <tr>
+                <td>1422</td>
+                <td>Mapari</td>
+                <td>CR-AS</td>
+                <td>0,003440612827</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>Apurinã do Igarapé Mucuim</td>
+                <td>CR-Mpur</td>
+                <td>0,00344016506</td>
+              </tr>
+              <tr>
+                <td>1665</td>
+                <td>Zoe</td>
+                <td>CR-CLPA</td>
+                <td>0,003415341132</td>
+              </tr>
+              <tr>
+                <td>18</td>
+                <td>Alto Tarauacá</td>
+                <td>CR-JUR</td>
+                <td>0,003376248344</td>
+              </tr>
+              <tr>
+                <td>110</td>
+                <td>Uneiuxi</td>
+                <td>CR-RNG</td>
+                <td>0,003329261607</td>
+              </tr>
+              <tr>
+                <td>1574</td>
+                <td>São Pedro do Sepatini</td>
+                <td>CR-Mpur</td>
+                <td>0,003315718365</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Acapuri de Cima</td>
+                <td>CR-AS</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>39</td>
+                <td>Ariramba</td>
+                <td>CR-MAO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>75</td>
+                <td>Praia do Índio</td>
+                <td>CR-TPJ</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>76</td>
+                <td>Praia do Mangue</td>
+                <td>CR-TPJ</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>111</td>
+                <td>Uneiuxi</td>
+                <td>CR-RNG</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>126</td>
+                <td>Kararaô</td>
+                <td>CR-CLPA</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>193</td>
+                <td>Morro Branco</td>
+                <td>CR-MA</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>258</td>
+                <td>Mangueira</td>
+                <td>CR-RR</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>272</td>
+                <td>Turé/Mariquita II</td>
+                <td>CR-BTO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>346</td>
+                <td>Lago Capanã</td>
+                <td>CR-MAD</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>347</td>
+                <td>Maraitá</td>
+                <td>CR-AS</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>349</td>
+                <td>Matintin</td>
+                <td>CR-AS</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>363</td>
+                <td>Prosperidade</td>
+                <td>CR-AS</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>367</td>
+                <td>Boa Vista - AM</td>
+                <td>CR-MAO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>397</td>
+                <td>Xambioá</td>
+                <td>CR-ATO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>433</td>
+                <td>Nova Jacundá</td>
+                <td>CR-BTO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>455</td>
+                <td>Jarudore</td>
+                <td>CR-CGB</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>460</td>
+                <td>Jaquiri</td>
+                <td>CR-AS</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>463</td>
+                <td>Tanaru ( restrição de uso )</td>
+                <td>CR-JPR</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>464</td>
+                <td>Porto Limoeiro</td>
+                <td>CR-AS</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1277</td>
+                <td>Estação Parecis</td>
+                <td>CR-CGB</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1289</td>
+                <td>Fortaleza do Patauá</td>
+                <td>CR-MAO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1297</td>
+                <td>Guajahã</td>
+                <td>CR-Mpur</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1310</td>
+                <td>Hi Merimã</td>
+                <td>CR-Mpur</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1322</td>
+                <td>Ilha do Camaleão</td>
+                <td>CR-MAO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1331</td>
+                <td>Itaitinga</td>
+                <td>CR-MAO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1379</td>
+                <td>Kaxinawá Colônia Vinte e Sete</td>
+                <td>CR-JUR</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1454</td>
+                <td>Muriru</td>
+                <td>CR-RR</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1458</td>
+                <td>Natal/Felicidade</td>
+                <td>CR-MAO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1486</td>
+                <td>Parana do Paricá</td>
+                <td>CR-AS</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1525</td>
+                <td>Porto Praia</td>
+                <td>CR-AS</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1618</td>
+                <td>Trocará - Doação</td>
+                <td>CR-BTO</td>
+                <td>0,003305636562</td>
+              </tr>
+              <tr>
+                <td>1669</td>
+                <td>Sapotal</td>
+                <td>CR-AS</td>
+                <td>0,003305636562</td>
+              </tr>
+            </table>
+          </div>
+          <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+          <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+      </section>
+
+      <section id="indice-ameaca-agrupamento" class="content-section" style="display:none;">
+        <h2>Índice de Exposição Ambiental das Terras Indígenas</h2>
+        <div class="carousel">
+          <figure class="slide">
+            <img src="images/Fig_01_Indice_exposicao_defor_2018-2023.png" alt="índice de exposição ao desmatamento">
+            <figcaption>Índice de exposição ao desmatamento nas Terras Indígenas da Amazônia Legal, calculado a partir dos
+              dados do PRODES/INPE (2018 a 2023).</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Fig_02_Indice_exposicao_degrad_2018-2023.png" alt="índice de exposição à degradação florestal">
+            <figcaption>Índice de exposição à degradação florestal nas Terras Indígenas da Amazônia Legal, produzido a
+              partir dos dados do DETER/INPE (2018 a 2023).</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Fig_03_Indice_exposicao_fogo_2018-2023.png" alt="índice de exposição ao fogo">
+            <figcaption> Índice de exposição ao fogo nas Terras Indígenas da Amazônia Legal, produzido a partir dos dados
+              do BDQueimadas/INPE (2018 a 2023).</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Fig_04_Indice_exposicao_mining_2018-2023.png" alt="índice de exposição à mineração">
+            <figcaption>Índice de exposição à mineração nas Terras Indígenas da Amazônia Legal, produzido a partir dos
+              dados do MapBiomas entre (2018 a 2023).</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Fig_05_Indice_exposicao_composto_2018-2023.png" alt="índice composto de exposição ambiental">
+            <figcaption>Índice composto de exposição ambiental por TI da Amazônia Legal, produzido a partir dos índices de
+              exposição ao desmatamento, à degradação ambiental, ao fogo e à mineração entre 2018 e 2023.</figcaption>
+          </figure>
+          <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+          <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+      </section>
+
+      <section id="priorizacao-socioambiental-agrupamentos" class="content-section" style="display:none;">
+        <h2>Priorização Socioambiental dos Agrupamentos Indígenas</h2>
+        <div class="carousel">
+          <figure class="slide">
+            <img src="images/Figure_1_grafico_priorizacao_quintis_defor_PORT.png"
+              alt="matriz priorização desmatamento x população">
+            <figcaption>Matriz de priorização dos agrupamentos indígenas utilizando uma classificação baseada em quintis,
+              de acordo com o índice de desmatamento e a população total. Cada ponto representa um agrupamento indígena,
+              colorido de acordo com sua classe combinada de quintis (Qx-y), onde x representa o quintil de desmatamento e
+              y o quintil de população. As linhas tracejadas indicam os limites dos quintis em ambos os eixos.
+            </figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figure_2_grafico_priorizacao_quintis_degrad_PORT.png"
+              alt="matriz priorização degradação florestal x população">
+            <figcaption>Matriz de priorização dos agrupamentos indígenas utilizando uma classificação baseada em quintis,
+              de acordo com o índice de degradação florestal e a população total. Cada ponto representa um agrupamento
+              indígena, colorido de acordo com sua classe combinada de quintis (Qx-y), onde x representa o quintil de
+              degradação florestal e y o quintil de população. As linhas tracejadas indicam os limites dos quintis em
+              ambos os eixos.</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figure_3_grafico_priorizacao_quintis_fogo_PORT.png" alt="matriz priorização fogo x população">
+            <figcaption>Matriz de priorização dos agrupamentos indígenas utilizando uma classificação baseada em quintis,
+              de acordo com o índice de fogo e a população total. Cada ponto representa um agrupamento indígena, colorido
+              de acordo com sua classe combinada de quintis (Qx-y), onde x representa o quintil de fogo e y o quintil de
+              população. As linhas tracejadas indicam os limites dos quintis em ambos os eixos.</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figure_4_grafico_priorizacao_quintis_mine_PORT.png"
+              alt="matriz priorização mineração x população">
+            <figcaption>Matriz de priorização dos agrupamentos indígenas utilizando uma classificação baseada em quintis,
+              de acordo com o índice de mineração e a população total. Cada ponto representa um agrupamento indígena,
+              colorido de acordo com sua classe combinada de quintis (Qx-y), onde x representa o quintil de mineração e y
+              o quintil de população. As linhas tracejadas indicam os limites dos quintis em ambos os eixos.</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figure_5_grafico_priorizacao_quintis_CETI_PORT.png"
+              alt="matriz priorização índice composto x população">
+            <figcaption>Matriz de priorização dos agrupamentos indígenas utilizando uma classificação baseada em quintis,
+              de acordo com o índice composto de ameaças ambientais e a população total. Cada ponto representa um
+              agrupamento indígena, colorido de acordo com sua classe combinada de quintis (Qx-y), onde x representa o
+              quintil do índice composto de ameaças ambientais e y o quintil de população. As linhas tracejadas indicam os
+              limites dos quintis em ambos os eixos.</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figure_6_mapa_defor_grupos_quintis_PORT.png"
+              alt="distribuição espacial desmatamento x população">
+            <figcaption>Distribuição espacial dos agrupamentos indígenas com base em uma classificação combinada de
+              quintis do índice de desmatamento e da população total. Cada ponto representa um agrupamento indígena,
+              colorido de acordo com sua classe na matriz de priorização (Qx-y), onde x é o quintil de desmatamento e y o
+              quintil de população. As linhas pretas indicam os limites estaduais da região da Amazônia Legal brasileira,
+              e as áreas em cinza representam as Terras Indígenas.</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figure_7_mapa_degrad_grupos_quintis_PORT.png"
+              alt="distribuição espacial degradação florestal x população">
+            <figcaption>Distribuição espacial dos agrupamentos indígenas com base em uma classificação combinada de
+              quintis do índice de degradação florestal e da população total. Cada ponto representa um agrupamento
+              indígena, colorido de acordo com sua classe na matriz de priorização (Qx-y), onde x é o quintil de
+              degradação florestal e y o quintil de população. As linhas pretas indicam os limites estaduais da região da
+              Amazônia Legal brasileira, e as áreas em cinza representam as Terras Indígenas.</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figure_8_mapa_fire_grupos_quintis_PORT.png"
+              alt="distribuição espacial fogo x população">
+            <figcaption>Distribuição espacial dos agrupamentos indígenas com base em uma classificação combinada de
+              quintis do índice de fogo e da população total. Cada ponto representa um agrupamento indígena, colorido de
+              acordo com sua classe na matriz de priorização (Qx-y), onde x é o quintil de fogo e y o quintil de
+              população. As linhas pretas indicam os limites estaduais da região da Amazônia Legal brasileira, e as áreas
+              em cinza representam as Terras Indígenas.</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figure_9_mapa_mining_grupos_quintis_PORT.png"
+              alt="distribuição espacial mineração x população">
+            <figcaption>Distribuição espacial dos agrupamentos indígenas com base em uma classificação combinada de
+              quintis do índice de mineração e da população total. Cada ponto representa um agrupamento indígena, colorido
+              de acordo com sua classe na matriz de priorização (Qx-y), onde x é o quintil de mineração e y o quintil de
+              população. As linhas pretas indicam os limites estaduais da região da Amazônia Legal brasileira, e as áreas
+              em cinza representam as Terras Indígenas.</figcaption>
+          </figure>
+          <figure class="slide">
+            <img src="images/Figure_10_mapa_CETI_grupos_quintis_PORT.png"
+              alt="distribuição espacial índice composto x população">
+            <figcaption>Distribuição espacial dos agrupamentos indígenas com base em uma classificação combinada de
+              quintis do índice composto de ameaças ambientais e da população total. Cada ponto representa um agrupamento
+              indígena, colorido de acordo com sua classe na matriz de priorização (Qx-y), onde x é o quintil índice
+              composto de ameaças ambientais e y o quintil de população. As linhas pretas indicam os limites estaduais da
+              região da Amazônia Legal brasileira, e as áreas em cinza representam as Terras Indígenas.</figcaption>
+          </figure>
+          <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+          <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer style="border-top: 1px solid #ccc;">
+    <p>&copy; 2025 Projeto Ameaças Ambientais. Todos os direitos reservados.</p>
+  </footer>
+</body>
+
+</html>

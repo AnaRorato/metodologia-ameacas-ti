@@ -1,0 +1,110 @@
+--------------------------------------------------------------
+--          This file contains a Fill Cell Script           --
+--               Compatible with LuccME 3.1                 --
+--       Generated with Fill Cell Script Configurator       --
+--               19/06/2025 at 11:23:35                     --
+--------------------------------------------------------------
+
+local x = os.clock()
+import("gis")
+
+local projFile = File("t3mp.tview")
+if(projFile:exists()) then
+	projFile:delete()
+end
+
+-- CREATING PROJECT --
+print("-- Creating Project --\n")
+
+proj = Project {
+	file = "t3mp.tview",
+	clean = true
+}
+
+-- ADDING LAYERS --
+print("-- Adding Layers to the Project --")
+
+l1 = Layer{
+	project = proj,
+	name = "limit",
+	file = "C:\\Users\\ANA\\Dropbox\\Auditoria_TCU\\FAP_DF\\Dados\\buffer_zones_agrupamentos_indigenas\\buffer_0_10_km_agrupamentos_indigenas_BR_censo_2022_plus_POP_AMZL_new.shp"
+}
+print("Added Cellular Spaced: buffer_0_10_km_agrupamentos_indigenas_BR_censo_2022_plus_POP_AMZL_new.shp")
+
+l2 = Layer{
+	project = proj,
+	name = "layer2",
+	file = "D:\\Auditoria_TCU\\MAPBIOMAS\\amzl_coverage_2018_polyconic.tif"
+}
+print("Added Layer2: amzl_coverage_2018_polyconic.tif")
+
+l3 = Layer{
+	project = proj,
+	name = "layer3",
+	file = "D:\\Auditoria_TCU\\MAPBIOMAS\\amzl_coverage_2023_polyconic.tif"
+}
+print("Added Layer3: amzl_coverage_2023_polyconic.tif")
+
+-- Checking EPSGs --
+print("\n-- Checking EPSGs--")
+local epsgVector = {l1.epsg, l2.epsg, l3.epsg}
+local fileVector = {"buffer_0_10_km_agrupamentos_indigenas_BR_censo_2022_plus_POP_AMZL_new.shp", "amzl_coverage_2018_polyconic.tif", "amzl_coverage_2023_polyconic.tif"}
+local checkEPSG = true
+
+for i = 1, #epsgVector, 1 do
+	if (epsgVector[i] ~= l1.epsg) then
+		print("Error: EPSG does not math - limit : "..l1.epsg.." "..fileVector[i].." : "..epsgVector[i])
+		checkEPSG = false
+	end
+
+	if checkEPSG then print("EPSG - limit : "..l1.epsg.."\t"..fileVector[i]..": "..epsgVector[i]) end
+end
+
+if not checkEPSG then os.exit() end
+
+-- Checking Shape Geometry --
+print("\n-- Checking Geometries--")
+l1:check()
+
+-- OPENING CELLULAR SPACE --
+print("\n-- Openning Cellular Space -- \n")
+local cs = Layer{
+	project = proj,
+	name = l1.name,
+}
+
+-- FILLING CELLULAR SPACE --
+print("Filling amzl_coverage_2018_polyconic.tif into Cellular Space using coverage operation")
+cs:fill{
+	layer = "layer2",
+	operation = "coverage",
+	attribute = "map18_",
+	dummy = 88,
+}
+
+print("Filling amzl_coverage_2023_polyconic.tif into Cellular Space using coverage operation")
+cs:fill{
+	layer = "layer3",
+	operation = "coverage",
+	attribute = "map23_",
+	dummy = 88,
+}
+
+projFile = File("t3mp.tview")
+if(projFile:exists()) then
+	projFile:delete()
+end
+
+-- Calculating execution time --
+local sTime = os.clock() - x
+local days = math.floor(sTime / 86400)
+local hours = math.floor(sTime % 86400 / 3600)
+local minutes = math.floor(sTime % 3600 / 60)
+local seconds = math.floor(sTime % 60)
+if seconds < 59 then
+	seconds = seconds + 1
+end
+
+print(string.format("\nElapsed time : %.2d : %.2d : %.2d hh : mm:ss", hours, minutes, seconds))
+print("\nEnd of Script")
+
